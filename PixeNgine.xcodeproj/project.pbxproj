@@ -7,9 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
+		DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */; };
+		DA8859B124536C1E008C8E43 /* PXSpriteRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */; };
 		DAA607A1243E86E400D0E349 /* PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA60797243E86E400D0E349 /* PixeNgine.framework */; };
 		DAA607A6243E86E400D0E349 /* PixeNgineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607A5243E86E400D0E349 /* PixeNgineTests.swift */; };
 		DAA607A8243E86E400D0E349 /* PixeNgine.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA6079A243E86E400D0E349 /* PixeNgine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607C2243E874600D0E349 /* PXRenderer.swift */; };
+		DAA607C6243E895100D0E349 /* PXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607C5243E895100D0E349 /* PXColor.swift */; };
+		DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607C7243E8C4900D0E349 /* Debug.swift */; };
+		DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607CB243E91E700D0E349 /* PXTile.swift */; };
+		DAA607CE243E92AD00D0E349 /* MetalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607CD243E92AD00D0E349 /* MetalUtils.swift */; };
+		DAA607D3243E973800D0E349 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = DAA607D2243E973800D0E349 /* Shaders.metal */; };
+		DAA607D5243E9C7200D0E349 /* ShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA607D4243E9C7200D0E349 /* ShaderTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607D72440ACFF00D0E349 /* PXTexture.swift */; };
+		DAA607DC2440ADE500D0E349 /* PXRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607DB2440ADE500D0E349 /* PXRect.swift */; };
+		DAA607DE2440AEB600D0E349 /* PXTextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607DD2440AEB600D0E349 /* PXTextureManager.swift */; };
+		DAA607E62440C4F300D0E349 /* PXConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607E52440C4F300D0E349 /* PXConfig.swift */; };
+		DAA6A1DB2440D76C00A9A620 /* PXCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */; };
+		DAA6A1DE2440D97800A9A620 /* Matrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1DD2440D97800A9A620 /* Matrices.swift */; };
+		DAA6A1E02440FD0100A9A620 /* PXCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1DF2440FD0100A9A620 /* PXCache.swift */; };
+		DAA6A1E32441029500A9A620 /* PXSpritePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */; };
+		DAA6A1E52443B1BA00A9A620 /* PXScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E42443B1BA00A9A620 /* PXScene.swift */; };
+		DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E72443B63800A9A620 /* PXEntity.swift */; };
+		DAF1198E24461BE400208974 /* PXSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198D24461BE400208974 /* PXSprite.swift */; };
+		DAF1199024461CE700208974 /* PXv3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198F24461CE700208974 /* PXv3f.swift */; };
+		DAF1199224461DCA00208974 /* PXv2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1199124461DCA00208974 /* PXv2f.swift */; };
+		DAF119982446250600208974 /* PXResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF119972446250600208974 /* PXResourceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,15 +44,47 @@
 			remoteGlobalIDString = DAA60796243E86E400D0E349;
 			remoteInfo = PixeNgine;
 		};
+		DAA607BB243E870900D0E349 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAA60776243E86CA00D0E349;
+			remoteInfo = "PixEngine-Test";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
+		DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXStaticSprite.swift; sourceTree = "<group>"; };
+		DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpriteRenderer.swift; sourceTree = "<group>"; };
 		DAA60797243E86E400D0E349 /* PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA6079A243E86E400D0E349 /* PixeNgine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixeNgine.h; sourceTree = "<group>"; };
 		DAA6079B243E86E400D0E349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAA607A0243E86E400D0E349 /* PixeNgineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixeNgineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA607A5243E86E400D0E349 /* PixeNgineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixeNgineTests.swift; sourceTree = "<group>"; };
 		DAA607A7243E86E400D0E349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "PixEngine-Test.xcodeproj"; path = "../PixEngine-Test/PixEngine-Test.xcodeproj"; sourceTree = "<group>"; };
+		DAA607C2243E874600D0E349 /* PXRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXRenderer.swift; sourceTree = "<group>"; };
+		DAA607C5243E895100D0E349 /* PXColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXColor.swift; sourceTree = "<group>"; };
+		DAA607C7243E8C4900D0E349 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		DAA607CB243E91E700D0E349 /* PXTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTile.swift; sourceTree = "<group>"; };
+		DAA607CD243E92AD00D0E349 /* MetalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalUtils.swift; sourceTree = "<group>"; };
+		DAA607D2243E973800D0E349 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		DAA607D4243E9C7200D0E349 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		DAA607D72440ACFF00D0E349 /* PXTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTexture.swift; sourceTree = "<group>"; };
+		DAA607DB2440ADE500D0E349 /* PXRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXRect.swift; sourceTree = "<group>"; };
+		DAA607DD2440AEB600D0E349 /* PXTextureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTextureManager.swift; sourceTree = "<group>"; };
+		DAA607E52440C4F300D0E349 /* PXConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXConfig.swift; sourceTree = "<group>"; };
+		DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCamera.swift; sourceTree = "<group>"; };
+		DAA6A1DD2440D97800A9A620 /* Matrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrices.swift; sourceTree = "<group>"; };
+		DAA6A1DF2440FD0100A9A620 /* PXCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCache.swift; sourceTree = "<group>"; };
+		DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpritePipeline.swift; sourceTree = "<group>"; };
+		DAA6A1E42443B1BA00A9A620 /* PXScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXScene.swift; sourceTree = "<group>"; };
+		DAA6A1E72443B63800A9A620 /* PXEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXEntity.swift; sourceTree = "<group>"; };
+		DAF1198D24461BE400208974 /* PXSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSprite.swift; sourceTree = "<group>"; };
+		DAF1198F24461CE700208974 /* PXv3f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv3f.swift; sourceTree = "<group>"; };
+		DAF1199124461DCA00208974 /* PXv2f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv2f.swift; sourceTree = "<group>"; };
+		DAF119972446250600208974 /* PXResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXResourceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,9 +106,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA63B7C82450A0EF004DA60F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DA8859AF24536BED008C8E43 /* EntityRenderers */,
+				DA8859AC24536196008C8E43 /* Abstract */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DA8859AB24536087008C8E43 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DAF5D92E2453A3FB00C28012 /* Abstract */,
+				DAA607CB243E91E700D0E349 /* PXTile.swift */,
+				DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */,
+				DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		DA8859AC24536196008C8E43 /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				DA8859A824535B4F008C8E43 /* CommonComponents.swift */,
+			);
+			path = Abstract;
+			sourceTree = "<group>";
+		};
+		DA8859AF24536BED008C8E43 /* EntityRenderers */ = {
+			isa = PBXGroup;
+			children = (
+				DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */,
+			);
+			path = EntityRenderers;
+			sourceTree = "<group>";
+		};
 		DAA6078D243E86E400D0E349 = {
 			isa = PBXGroup;
 			children = (
+				DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */,
 				DAA60799243E86E400D0E349 /* PixeNgine */,
 				DAA607A4243E86E400D0E349 /* PixeNgineTests */,
 				DAA60798243E86E400D0E349 /* Products */,
@@ -71,8 +164,21 @@
 		DAA60799243E86E400D0E349 /* PixeNgine */ = {
 			isa = PBXGroup;
 			children = (
+				DA8859AB24536087008C8E43 /* Entities */,
+				DA63B7C82450A0EF004DA60F /* Components */,
+				DAF11996244624E500208974 /* Res */,
+				DAA6A1E92443B7A500A9A620 /* Scene */,
+				DAA6A1E12441025D00A9A620 /* Pipelines */,
+				DAA607DA2440ADDA00D0E349 /* Misc */,
+				DAA607D2243E973800D0E349 /* Shaders.metal */,
+				DAA607CF243E972200D0E349 /* Metal */,
+				DAA607C4243E893C00D0E349 /* Utils */,
 				DAA6079A243E86E400D0E349 /* PixeNgine.h */,
 				DAA6079B243E86E400D0E349 /* Info.plist */,
+				DAA607D72440ACFF00D0E349 /* PXTexture.swift */,
+				DAA607C2243E874600D0E349 /* PXRenderer.swift */,
+				DAA607E52440C4F300D0E349 /* PXConfig.swift */,
+				DAA6A1DF2440FD0100A9A620 /* PXCache.swift */,
 			);
 			path = PixeNgine;
 			sourceTree = "<group>";
@@ -86,6 +192,77 @@
 			path = PixeNgineTests;
 			sourceTree = "<group>";
 		};
+		DAA607B8243E870900D0E349 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAA607BC243E870900D0E349 /* PixEngine-Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAA607C4243E893C00D0E349 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DAA607C5243E895100D0E349 /* PXColor.swift */,
+				DAA607C7243E8C4900D0E349 /* Debug.swift */,
+				DAA607CD243E92AD00D0E349 /* MetalUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DAA607CF243E972200D0E349 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				DAA607D4243E9C7200D0E349 /* ShaderTypes.h */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		DAA607DA2440ADDA00D0E349 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				DAA607DB2440ADE500D0E349 /* PXRect.swift */,
+				DAA6A1DD2440D97800A9A620 /* Matrices.swift */,
+				DAF1198F24461CE700208974 /* PXv3f.swift */,
+				DAF1199124461DCA00208974 /* PXv2f.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		DAA6A1E12441025D00A9A620 /* Pipelines */ = {
+			isa = PBXGroup;
+			children = (
+				DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */,
+			);
+			path = Pipelines;
+			sourceTree = "<group>";
+		};
+		DAA6A1E92443B7A500A9A620 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DAA6A1E42443B1BA00A9A620 /* PXScene.swift */,
+				DAF1198D24461BE400208974 /* PXSprite.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		DAF11996244624E500208974 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				DAF119972446250600208974 /* PXResourceManager.swift */,
+				DAA607DD2440AEB600D0E349 /* PXTextureManager.swift */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
+		DAF5D92E2453A3FB00C28012 /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				DAA6A1E72443B63800A9A620 /* PXEntity.swift */,
+			);
+			path = Abstract;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -94,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA607A8243E86E400D0E349 /* PixeNgine.h in Headers */,
+				DAA607D5243E9C7200D0E349 /* ShaderTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +326,7 @@
 				TargetAttributes = {
 					DAA60796243E86E400D0E349 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 					DAA6079F243E86E400D0E349 = {
 						CreatedOnToolsVersion = 11.4;
@@ -165,6 +344,12 @@
 			mainGroup = DAA6078D243E86E400D0E349;
 			productRefGroup = DAA60798243E86E400D0E349 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DAA607B8243E870900D0E349 /* Products */;
+					ProjectRef = DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DAA60796243E86E400D0E349 /* PixeNgine */,
@@ -172,6 +357,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DAA607BC243E870900D0E349 /* PixEngine-Test.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "PixEngine-Test.app";
+			remoteRef = DAA607BB243E870900D0E349 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DAA60795243E86E400D0E349 /* Resources */ = {
@@ -195,6 +390,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */,
+				DAA607D3243E973800D0E349 /* Shaders.metal in Sources */,
+				DAF1199224461DCA00208974 /* PXv2f.swift in Sources */,
+				DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */,
+				DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */,
+				DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */,
+				DAA6A1E32441029500A9A620 /* PXSpritePipeline.swift in Sources */,
+				DAA607DE2440AEB600D0E349 /* PXTextureManager.swift in Sources */,
+				DAF119982446250600208974 /* PXResourceManager.swift in Sources */,
+				DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */,
+				DAA607DC2440ADE500D0E349 /* PXRect.swift in Sources */,
+				DAA6A1DE2440D97800A9A620 /* Matrices.swift in Sources */,
+				DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */,
+				DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */,
+				DAA607C6243E895100D0E349 /* PXColor.swift in Sources */,
+				DAA6A1E02440FD0100A9A620 /* PXCache.swift in Sources */,
+				DA8859B124536C1E008C8E43 /* PXSpriteRenderer.swift in Sources */,
+				DAA607CE243E92AD00D0E349 /* MetalUtils.swift in Sources */,
+				DAF1199024461CE700208974 /* PXv3f.swift in Sources */,
+				DAF1198E24461BE400208974 /* PXSprite.swift in Sources */,
+				DAA6A1DB2440D76C00A9A620 /* PXCamera.swift in Sources */,
+				DAA6A1E52443B1BA00A9A620 /* PXScene.swift in Sources */,
+				DAA607E62440C4F300D0E349 /* PXConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +492,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -330,6 +549,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -340,6 +560,7 @@
 		DAA607AC243E86E400D0E349 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2V8DLQ6638;
@@ -356,6 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shivatinker.PixeNgine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +586,7 @@
 		DAA607AD243E86E400D0E349 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2V8DLQ6638;
@@ -388,6 +611,7 @@
 		DAA607AF243E86E400D0E349 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V8DLQ6638;
 				INFOPLIST_FILE = PixeNgineTests/Info.plist;
@@ -406,6 +630,7 @@
 		DAA607B0243E86E400D0E349 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V8DLQ6638;
 				INFOPLIST_FILE = PixeNgineTests/Info.plist;
