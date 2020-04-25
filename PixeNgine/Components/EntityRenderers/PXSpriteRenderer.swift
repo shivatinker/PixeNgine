@@ -46,6 +46,8 @@ public class PXSpriteRenderer: PXEntityRenderer {
             scaleX: parent.dimensions.x,
             scaleY: parent.dimensions.y)
         uniforms.projectionMatrix = camera.projectionMatrix
+        uniforms.opacity = parent.opacity
+        uniforms.brightness = parent.brightness
 
         encoder.setVertexBytes(vertexData, length: MemoryLayout.size(ofValue: vertexData[0]) * vertexData.count, index: VertexAttribute.position.rawValue)
 
@@ -56,6 +58,7 @@ public class PXSpriteRenderer: PXEntityRenderer {
             texture.uvBounds.x2, texture.uvBounds.y2]
         encoder.setVertexBytes(texcoordData, length: MemoryLayout.size(ofValue: texcoordData[0]) * texcoordData.count, index: VertexAttribute.texcoord.rawValue)
         encoder.setVertexBytes(&uniforms, length: MemoryLayout.size(ofValue: uniforms), index: VertexAttribute.uniforms.rawValue)
+        encoder.setFragmentBytes(&uniforms, length: MemoryLayout.size(ofValue: uniforms), index: VertexAttribute.uniforms.rawValue)
 
         encoder.setFragmentTexture(texture.texture, index: TextureIndex.color.rawValue)
 

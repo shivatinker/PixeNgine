@@ -12,6 +12,14 @@ public class PXTile: PXStaticSprite {
 
 
     private let descriptor: PXTileDescriptor
+    public var solid: Bool = false
+    public override var brightness: Float {
+        if solid {
+            return 0.4
+        } else {
+            return 1.0
+        }
+    }
 
     public init?(id: Int) {
         guard let descriptor = PXConfig.resourceManager.tileDescriptors[id] else {
@@ -22,10 +30,5 @@ public class PXTile: PXStaticSprite {
         super.init(name: descriptor.name)
         let texture = PXConfig.sharedTextureManager.getTextureByID(id: descriptor.texture)
         animator.currentSprite = PXSprite(texture: texture)
-
-//        guard dimensions == Float(PXConfig.TILE_SIZE) * .ones else {
-//            pxDebug("Tile texture \(name) has invalid size")
-//            return nil
-//        }
     }
 }

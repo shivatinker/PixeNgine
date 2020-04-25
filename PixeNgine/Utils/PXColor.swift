@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Metal
 import simd
 
 public struct PXColor {
@@ -17,5 +18,8 @@ public struct PXColor {
     }
     public var uiColor: UIColor {
         UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: CGFloat(a))
+    }
+    public var mtlClearColor: MTLClearColor {
+        MTLClearColor(red: Double(r), green: Double(g), blue: Double(b), alpha: Double(a))
     }
 }

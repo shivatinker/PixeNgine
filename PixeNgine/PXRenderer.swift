@@ -13,7 +13,7 @@ import Metal
 public class PXRenderer: NSObject {
     // MARK: Constants
 
-    private let bgColor = PXColor(r: 1.0, g: 0.0, b: 0.0, a: 1.0)
+    private let bgColor = PXColor(r: 0.0, g: 0.0, b: 0.0, a: 1.0)
 
     // MARK: Private members
 
@@ -47,6 +47,7 @@ public class PXRenderer: NSObject {
     public init?(view: MTKView) {
         mtkView = view
         mtkView.backgroundColor = bgColor.uiColor
+        mtkView.clearColor = bgColor.mtlClearColor
 
         screenSize = mtkView.drawableSize
 

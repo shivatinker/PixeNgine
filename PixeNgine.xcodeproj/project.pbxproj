@@ -30,6 +30,8 @@
 		DAA6A1E32441029500A9A620 /* PXSpritePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */; };
 		DAA6A1E52443B1BA00A9A620 /* PXScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E42443B1BA00A9A620 /* PXScene.swift */; };
 		DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E72443B63800A9A620 /* PXEntity.swift */; };
+		DAC5DDA52454846F00FFD590 /* PXLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5DDA42454846F00FFD590 /* PXLight.swift */; };
+		DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */; };
 		DAF1198E24461BE400208974 /* PXSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198D24461BE400208974 /* PXSprite.swift */; };
 		DAF1199024461CE700208974 /* PXv3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198F24461CE700208974 /* PXv3f.swift */; };
 		DAF1199224461DCA00208974 /* PXv2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1199124461DCA00208974 /* PXv2f.swift */; };
@@ -81,6 +83,8 @@
 		DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpritePipeline.swift; sourceTree = "<group>"; };
 		DAA6A1E42443B1BA00A9A620 /* PXScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXScene.swift; sourceTree = "<group>"; };
 		DAA6A1E72443B63800A9A620 /* PXEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXEntity.swift; sourceTree = "<group>"; };
+		DAC5DDA42454846F00FFD590 /* PXLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXLight.swift; sourceTree = "<group>"; };
+		DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXLightPipeline.swift; sourceTree = "<group>"; };
 		DAF1198D24461BE400208974 /* PXSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSprite.swift; sourceTree = "<group>"; };
 		DAF1198F24461CE700208974 /* PXv3f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv3f.swift; sourceTree = "<group>"; };
 		DAF1199124461DCA00208974 /* PXv2f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv2f.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				DAA607CB243E91E700D0E349 /* PXTile.swift */,
 				DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */,
 				DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */,
+				DAC5DDA42454846F00FFD590 /* PXLight.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */,
+				DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */,
 			);
 			path = Pipelines;
 			sourceTree = "<group>";
@@ -393,11 +399,13 @@
 				DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */,
 				DAA607D3243E973800D0E349 /* Shaders.metal in Sources */,
 				DAF1199224461DCA00208974 /* PXv2f.swift in Sources */,
+				DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */,
 				DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */,
 				DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */,
 				DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */,
 				DAA6A1E32441029500A9A620 /* PXSpritePipeline.swift in Sources */,
 				DAA607DE2440AEB600D0E349 /* PXTextureManager.swift in Sources */,
+				DAC5DDA52454846F00FFD590 /* PXLight.swift in Sources */,
 				DAF119982446250600208974 /* PXResourceManager.swift in Sources */,
 				DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */,
 				DAA607DC2440ADE500D0E349 /* PXRect.swift in Sources */,

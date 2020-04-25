@@ -41,10 +41,13 @@ vertex ColorInOut vertex_basic(Vertex in [[stage_in]],
 }
 
 fragment float4 fragment_basic(ColorInOut in [[stage_in]],
-                               texture2d<float> texture [[texture(TextureIndexColor)]])
+                               texture2d<float> texture [[texture(TextureIndexColor)]],
+                               constant Uniforms &uniforms [[buffer(BufferIndexUniforms)]])
 {
     constexpr sampler colorSampler(filter::nearest);
 
     float4 colorSample = texture.sample(colorSampler, in.texcoord.xy);
+    colorSample.rgb *= uniforms.brightness;
+    colorSample.a *= uniforms.opacity;
     return colorSample;
 }

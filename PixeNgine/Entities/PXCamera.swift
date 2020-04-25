@@ -15,6 +15,7 @@ public class PXCamera: PXEntity {
     public var dimensions: PXv2f
     public var pos: PXv2f = .zero
     public var visible: Bool = false
+    public var outOfBoundsDiscardable: Bool = false
 
     // MARK: Camera controller
     public init(dimensions: PXv2f) {

@@ -23,17 +23,22 @@ open class PXStaticSprite: PXSpritedEntity {
     public let name: String
     public var pos: PXv2f = .zero
     public var dimensions: PXv2f {
-        animator.currentSprite?.dimensions ?? PXv2f.zero
+        Float(scale) * (animator.currentSprite?.dimensions ?? PXv2f.zero)
     }
     public var currentSprite: PXSprite? {
         animator.currentSprite
     }
-    public var visible: Bool = true
+    open var visible: Bool = true
+    open var outOfBoundsDiscardable: Bool { false }
+    open var opacity: Float { 1.0 }
+    open var brightness: Float { 1.0 }
 
     // MARK: Components
 
     public var animator = PXStaticAnimator()
     public var renderer = PXSpriteRenderer()
+
+    public var scale: Int = 1
 
     public init(name: String) {
         self.name = name
