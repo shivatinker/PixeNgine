@@ -43,4 +43,7 @@ public struct PXv2f {
     public static func == (left: PXv2f, right: PXv2f) -> Bool {
         return left.x == right.x && left.y == right.y
     }
+    public var vec: SIMD2<Float> {
+        SIMD2<Float>(x: x, y: y)
+    }
 }

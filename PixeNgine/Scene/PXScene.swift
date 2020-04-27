@@ -8,6 +8,7 @@
 
 import Foundation
 import Metal
+import MetalKit
 
 public class PXScene {
 
@@ -17,6 +18,7 @@ public class PXScene {
     private var updateable = [Int: PXUpdateableEntity]()
     private var entities = [Int: PXEntity]()
     private var hud = [Int: PXEntity]()
+    private var lights = [Int: PXLight]()
 
 
     private struct TileXY: Hashable {
@@ -32,8 +34,8 @@ public class PXScene {
         PXRect(
             x1: 0,
             y1: 0,
-            x2: Float(width * PXConfig.TILE_SIZE),
-            y2: Float(height * PXConfig.TILE_SIZE))
+            x2: Float(width * PXConfig.tileSize),
+            y2: Float(height * PXConfig.tileSize))
     }
     public var camera: PXCamera?
     public var hudCamera: PXCamera?
@@ -54,8 +56,13 @@ public class PXScene {
         nextID += 1
     }
 
+    public func addLight(_ light: PXLight) {
+        lights[nextID] = light
+        nextID += 1
+    }
+
     public func setBackgroundTile(x: Int, y: Int, tile: PXTile) {
-        tile.pos = Float(PXConfig.TILE_SIZE) * PXv2f(Float(x), Float(y))
+        tile.pos = Float(PXConfig.tileSize) * PXv2f(Float(x), Float(y))
         background[TileXY(x: x, y: y)] = tile
     }
 
@@ -65,10 +72,10 @@ public class PXScene {
 
     public func borderTiles(entity: PXEntity) -> [(x: Int, y: Int)] {
         let border = PXRect(
-            x1: floorf(entity.rect.x1 / Float(PXConfig.TILE_SIZE)),
-            y1: floorf(entity.rect.y1 / Float(PXConfig.TILE_SIZE)),
-            x2: floorf(entity.rect.x2 / Float(PXConfig.TILE_SIZE)),
-            y2: floorf(entity.rect.y2 / Float(PXConfig.TILE_SIZE)))
+            x1: floorf(entity.rect.x1 / Float(PXConfig.tileSize)),
+            y1: floorf(entity.rect.y1 / Float(PXConfig.tileSize)),
+            x2: floorf(entity.rect.x2 / Float(PXConfig.tileSize)),
+            y2: floorf(entity.rect.y2 / Float(PXConfig.tileSize)))
         var res = [(Int, Int)]()
         for x in Int(border.x1)...Int(border.x2) {
             if x == Int(border.x1) || x == Int(border.x2) {
@@ -103,6 +110,18 @@ public class PXScene {
         outOfBounds.forEach({ entities.removeValue(forKey: $0) })
         outOfBounds.forEach({ updateable.removeValue(forKey: $0) })
 //        print("\(entities.count) entities.")
+    }
+
+    
+
+    public func renderLights(encoder: MTLRenderCommandEncoder) {
+        // Lighting pass
+
+        if let camera = camera {
+            let context = PXRendererContext(encoder: encoder, camera: camera)
+            let r = PXLightRenderer()
+            r.draw(context: context, lights: lights.values.map({ $0 }))
+        }
     }
 
     public func renderScene(encoder: MTLRenderCommandEncoder) {

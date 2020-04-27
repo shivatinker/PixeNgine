@@ -38,10 +38,10 @@ public class PXCamera: PXEntity {
     public var backgroundBounds: PXCameraBgBounds {
         let cb = clipBounds
         return PXCameraBgBounds(
-            x1: Int(floor(cb.x1 / Float(PXConfig.TILE_SIZE))),
-            x2: Int(ceil(cb.x2 / Float(PXConfig.TILE_SIZE))),
-            y1: Int(floor(cb.y1 / Float(PXConfig.TILE_SIZE))),
-            y2: Int(ceil(cb.y2 / Float(PXConfig.TILE_SIZE))))
+            x1: Int(floor(cb.x1 / Float(PXConfig.tileSize))),
+            x2: Int(ceil(cb.x2 / Float(PXConfig.tileSize))),
+            y1: Int(floor(cb.y1 / Float(PXConfig.tileSize))),
+            y2: Int(ceil(cb.y2 / Float(PXConfig.tileSize))))
     }
 
     public func isEntityVisible(_ entity: PXEntity) -> Bool {

@@ -34,18 +34,19 @@ class PXSpritePipeline: PXPipeline {
         vertexDescriptor.layouts[BufferIndex.texcoord.rawValue].stepFunction = MTLVertexStepFunction.perVertex
 
 
-        ///Create pipeline descriptor
+        //Create pipeline descriptor
 
         let library = try? PXConfig.device.makeDefaultLibrary(bundle: Bundle(for: PXRenderer.self))
         let vertexFunction = library?.makeFunction(name: vertexShaderName)
         let fragmentFunction = library?.makeFunction(name: fragmentShaderName)
 
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.label = "RenderPipeline"
+        pipelineDescriptor.label = "Sprite Pipeline"
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm_srgb
+        
+        pipelineDescriptor.colorAttachments[0].pixelFormat = PXConfig.texturePixelFormat
         pipelineDescriptor.colorAttachments[0].isBlendingEnabled = true
         pipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add
         pipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add
@@ -53,8 +54,6 @@ class PXSpritePipeline: PXPipeline {
         pipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = .sourceAlpha
         pipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha
         pipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-        
-        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         
         return try? PXConfig.device.makeRenderPipelineState(descriptor: pipelineDescriptor)
     }

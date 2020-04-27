@@ -12,36 +12,56 @@ import Metal
 
 public class PXRenderer: NSObject {
     // MARK: Constants
-
     private let bgColor = PXColor(r: 0.0, g: 0.0, b: 0.0, a: 1.0)
 
     // MARK: Private members
-
     private var mtkView: MTKView
-
     private let device = PXConfig.device
     private let commandQueue: MTLCommandQueue
-
     private var semaphore: DispatchSemaphore
-
     private var screenSize: CGSize!
 
+    // MARK: Textures
+    private func buildTexture(pixelFormat: MTLPixelFormat,
+                              size: CGSize,
+                              label: String) -> MTLTexture {
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(
+            pixelFormat: pixelFormat,
+            width: Int(size.width),
+            height: Int(size.height),
+            mipmapped: false)
+        descriptor.usage = [.shaderRead, .renderTarget]
+        descriptor.storageMode = .private
+        guard let texture =
+            PXConfig.device.makeTexture(descriptor: descriptor) else {
+                fatalError()
+        }
+        texture.label = "\(label) texture"
+        return texture
+    }
 
-    private var tileCount: Float = 12
+    private var lightsTexture: MTLTexture!
+    private var entitiesTexture: MTLTexture!
 
+    // MARK: Render pass descriptors
+    private var lightsRenderPassDescriptor: MTLRenderPassDescriptor!
+    private func configureLightsPass() -> MTLRenderPassDescriptor {
+        let descriptor = MTLRenderPassDescriptor()
+        descriptor.setColorAttachment(index: 0, texture: lightsTexture)
+        return descriptor
+    }
 
-    // MARK: Internal
+    private var entityRenderPassDescriptor: MTLRenderPassDescriptor!
+    private func configureEntityPass() -> MTLRenderPassDescriptor {
+        let descriptor = MTLRenderPassDescriptor()
+        descriptor.setColorAttachment(index: 0, texture: entitiesTexture)
+        return descriptor
+    }
 
     // MARK: Public API
-    public var width: Float {
-        Float(screenSize.width)
-    }
-    public var height: Float {
-        Float(screenSize.height)
-    }
-    public var aspectRatio: Float {
-        Float(screenSize.width) / Float(screenSize.height)
-    }
+    public var width: Float { Float(screenSize.width) }
+    public var height: Float { Float(screenSize.height) }
+    public var aspectRatio: Float { Float(screenSize.width) / Float(screenSize.height) }
     public var scene: PXScene?
 
     public init?(view: MTKView) {
@@ -52,44 +72,91 @@ public class PXRenderer: NSObject {
         screenSize = mtkView.drawableSize
 
         mtkView.device = device
-        mtkView.colorPixelFormat = .bgra8Unorm_srgb
+        mtkView.colorPixelFormat = PXConfig.framebufferPixelFormat
 
-        guard let queue = self.device.makeCommandQueue() else {
-            fatalError()
-        }
+        guard let queue = self.device.makeCommandQueue() else { fatalError() }
         commandQueue = queue
         semaphore = DispatchSemaphore(value: 3)
+
         super.init()
         mtkView.delegate = self
+
+
+        lightsTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Lights Texture")
+        entitiesTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Entities Texture")
+
+        lightsRenderPassDescriptor = configureLightsPass()
+        entityRenderPassDescriptor = configureEntityPass()
+
         pxDebug("Ready")
     }
 }
 
-public struct PXRendererContext{
+// MARK: Utility extensions
+private extension MTLRenderPassDescriptor {
+    func setColorAttachment(index: Int, texture: MTLTexture) {
+        let attachment: MTLRenderPassColorAttachmentDescriptor = colorAttachments[index]
+        attachment.texture = texture
+        attachment.loadAction = .clear
+        attachment.storeAction = .store
+        attachment.clearColor = MTLClearColorMake(0, 0, 0, 0)
+    }
+}
+
+// MARK: Main rendering loop
+public struct PXRendererContext {
     var encoder: MTLRenderCommandEncoder
     var camera: PXCamera
 }
 
 extension PXRenderer: MTKViewDelegate {
     public func draw(in view: MTKView) {
+        // Wait for next frame requested
         _ = semaphore.wait(timeout: .distantFuture)
+
+        // Update game logic
         scene?.updateScene()
-        let commandBuffer = commandQueue.makeCommandBuffer()!
-        commandBuffer.addCompletedHandler { _ in
-            self.semaphore.signal()
+
+        if let frameRenderPass = mtkView.currentRenderPassDescriptor {
+            // Setup command buffer
+            let commandBuffer = commandQueue.makeCommandBuffer()!
+            commandBuffer.addCompletedHandler { _ in self.semaphore.signal() }
+
+            // Render entities into texture
+            let entityEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: entityRenderPassDescriptor)!
+            entityEncoder.label = "Entity encoder"
+            entityEncoder.pushDebugGroup("Entities")
+            scene?.renderScene(encoder: entityEncoder)
+            entityEncoder.popDebugGroup()
+            entityEncoder.endEncoding()
+
+            // Render lights into texture
+            let lightsEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: lightsRenderPassDescriptor)!
+            lightsEncoder.label = "Lights encoder"
+            lightsEncoder.pushDebugGroup("Lights")
+            scene?.renderLights(encoder: lightsEncoder)
+            lightsEncoder.popDebugGroup()
+            lightsEncoder.endEncoding()
+
+            // Combine textures and render on the screen
+
+//            frameRenderPass.setColorAttachment(index: 1, texture: entitiesTexture)
+//            frameRenderPass.setColorAttachment(index: 2, texture: lightsTexture)
+            let compositionEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: frameRenderPass)!
+            compositionEncoder.label = "Composition encoder"
+            compositionEncoder.pushDebugGroup("Combine textures")
+            let r = PXCompositionRenderer()
+            r.draw(encoder: compositionEncoder, entities: entitiesTexture, lights: lightsTexture)
+            compositionEncoder.popDebugGroup()
+
+            compositionEncoder.endEncoding()
+
+
+            if let drawable = view.currentDrawable {
+                commandBuffer.present(drawable)
+            }
+            commandBuffer.commit()
         }
-        let descriptor = view.currentRenderPassDescriptor!
-
-        let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)!
-
-        scene?.renderScene(encoder: encoder)
-
-        encoder.endEncoding()
-
-        if let drawable = view.currentDrawable {
-            commandBuffer.present(drawable)
-        }
-        commandBuffer.commit()
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

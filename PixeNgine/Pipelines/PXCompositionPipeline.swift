@@ -1,19 +1,19 @@
 //
-//  PXLightPipeline.swift
+//  PXCompositionPipeline.swift
 //  PixeNgine
 //
-//  Created by Andrii Zinoviev on 25.04.2020.
+//  Created by Andrii Zinoviev on 27.04.2020.
 //  Copyright © 2020 Andrii Zinoviev. All rights reserved.
 //
 
 import Foundation
 import Metal
 
-class PXLightPipeline: PXPipeline {
-    
-    private static let vertexShaderName = "vertex_lights"
-    private static let fragmentShaderName = "fragment_lights"
-    
+class PXCompositionPipeline: PXPipeline {
+
+    private static let vertexShaderName = "vertex_composition"
+    private static let fragmentShaderName = "fragment_composition"
+
     static func createInstance() -> MTLRenderPipelineState? {
         let vertexDescriptor = MTLVertexDescriptor()
 
@@ -32,20 +32,30 @@ class PXLightPipeline: PXPipeline {
         let fragmentFunction = library?.makeFunction(name: fragmentShaderName)
 
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.label = "LightsPipeline"
+        pipelineDescriptor.label = "Composition pipeline"
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
-        
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
-        pipelineDescriptor.colorAttachments[0].pixelFormat = PXConfig.texturePixelFormat
-        pipelineDescriptor.colorAttachments[0].isBlendingEnabled = true
-        pipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add
-        pipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add
-        pipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = .one
-        pipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = .sourceAlpha
-        pipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha
-        pipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = .oneMinusSourceAlpha
+
+        pipelineDescriptor.configureAttachment(index: 0, pixelFormat: PXConfig.framebufferPixelFormat)
+//        pipelineDescriptor.configureAttachment(index: 1, pixelFormat: PXConfig.texturePixelFormat)
+//        pipelineDescriptor.configureAttachment(index: 2, pixelFormat: PXConfig.texturePixelFormat)
+
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         
         return try? PXConfig.device.makeRenderPipelineState(descriptor: pipelineDescriptor)
+    }
+}
+
+private extension MTLRenderPipelineDescriptor {
+    func configureAttachment(index: Int, pixelFormat: MTLPixelFormat) {
+        colorAttachments[index].pixelFormat = pixelFormat
+        colorAttachments[index].isBlendingEnabled = true
+        colorAttachments[index].rgbBlendOperation = .add
+        colorAttachments[index].alphaBlendOperation = .add
+        colorAttachments[index].sourceRGBBlendFactor = .one
+        colorAttachments[index].sourceAlphaBlendFactor = .sourceAlpha
+        colorAttachments[index].destinationRGBBlendFactor = .oneMinusSourceAlpha
+        colorAttachments[index].destinationAlphaBlendFactor = .oneMinusSourceAlpha
     }
 }

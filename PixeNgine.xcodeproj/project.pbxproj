@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
+		DA3EADBC2457325600452FFA /* PXCompositionRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADBB2457325600452FFA /* PXCompositionRenderer.swift */; };
+		DA4C287A24561F8C00BEF1D0 /* PXLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C287924561F8C00BEF1D0 /* PXLightRenderer.swift */; };
 		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
 		DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */; };
 		DA8859B124536C1E008C8E43 /* PXSpriteRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
+		DA3EADBB2457325600452FFA /* PXCompositionRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionRenderer.swift; sourceTree = "<group>"; };
+		DA4C287924561F8C00BEF1D0 /* PXLightRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXLightRenderer.swift; sourceTree = "<group>"; };
 		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
 		DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXStaticSprite.swift; sourceTree = "<group>"; };
 		DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpriteRenderer.swift; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */,
+				DA4C287924561F8C00BEF1D0 /* PXLightRenderer.swift */,
+				DA3EADBB2457325600452FFA /* PXCompositionRenderer.swift */,
 			);
 			path = EntityRenderers;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			children = (
 				DAA6A1E22441029500A9A620 /* PXSpritePipeline.swift */,
 				DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */,
+				DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */,
 			);
 			path = Pipelines;
 			sourceTree = "<group>";
@@ -397,10 +406,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */,
+				DA3EADBC2457325600452FFA /* PXCompositionRenderer.swift in Sources */,
 				DAA607D3243E973800D0E349 /* Shaders.metal in Sources */,
 				DAF1199224461DCA00208974 /* PXv2f.swift in Sources */,
 				DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */,
 				DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */,
+				DA4C287A24561F8C00BEF1D0 /* PXLightRenderer.swift in Sources */,
+				DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */,
 				DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */,
 				DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */,
 				DAA6A1E32441029500A9A620 /* PXSpritePipeline.swift in Sources */,

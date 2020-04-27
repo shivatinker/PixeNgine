@@ -12,6 +12,13 @@ import Metal
 import simd
 
 public struct PXColor {
+    public init(r: Float, g: Float, b: Float, a: Float) {
+        self.r = r
+        self.g = g
+        self.b = b
+        self.a = a
+    }
+    
     public var r, g, b, a: Float
     public var vector: SIMD4<Float> {
         SIMD4<Float>(r, g, b, a)
