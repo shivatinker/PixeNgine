@@ -25,7 +25,7 @@ public class PXTextureManager {
         return textureCache[id] ?? (textureCache["invalid"]!)
     }
     
-    open func loadAllTextures(path: URL, recursively: Bool = true) throws {
+    public func loadAllTextures(path: URL, recursively: Bool = true) throws {
         let filenames = try fileManager.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         let textureJsonURLs = filenames.filter({ $0.lastPathComponent.contains(".pxatlas")})
 //        pxDebug("Found \(textureDescriptors.count) textures: \(textureDescriptors)")

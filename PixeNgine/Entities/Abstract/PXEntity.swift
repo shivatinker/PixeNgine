@@ -52,6 +52,7 @@ public protocol PXUpdateableEntity: PXEntity {
 public protocol PXDrawableEntity: PXEntity {
     var opacity: Float { get }
     var brightness: Float { get }
+    var light: PXLight? { get }
     func draw(context: PXRendererContext)
 }
 

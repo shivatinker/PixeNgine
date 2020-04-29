@@ -20,7 +20,6 @@
 		DAA607C6243E895100D0E349 /* PXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607C5243E895100D0E349 /* PXColor.swift */; };
 		DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607C7243E8C4900D0E349 /* Debug.swift */; };
 		DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607CB243E91E700D0E349 /* PXTile.swift */; };
-		DAA607CE243E92AD00D0E349 /* MetalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607CD243E92AD00D0E349 /* MetalUtils.swift */; };
 		DAA607D3243E973800D0E349 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = DAA607D2243E973800D0E349 /* Shaders.metal */; };
 		DAA607D5243E9C7200D0E349 /* ShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA607D4243E9C7200D0E349 /* ShaderTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607D72440ACFF00D0E349 /* PXTexture.swift */; };
@@ -39,6 +38,10 @@
 		DAF1199024461CE700208974 /* PXv3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198F24461CE700208974 /* PXv3f.swift */; };
 		DAF1199224461DCA00208974 /* PXv2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1199124461DCA00208974 /* PXv2f.swift */; };
 		DAF119982446250600208974 /* PXResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF119972446250600208974 /* PXResourceManager.swift */; };
+		DAF588962459FFBB00F273A0 /* PXFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588952459FFBB00F273A0 /* PXFontManager.swift */; };
+		DAF588992459FFC800F273A0 /* PXFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588982459FFC800F273A0 /* PXFont.swift */; };
+		DAF5889B245A10EC00F273A0 /* PXTextRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5889A245A10EC00F273A0 /* PXTextRenderer.swift */; };
+		DAF5889D245A128000F273A0 /* PXText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5889C245A128000F273A0 /* PXText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +79,6 @@
 		DAA607C5243E895100D0E349 /* PXColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXColor.swift; sourceTree = "<group>"; };
 		DAA607C7243E8C4900D0E349 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		DAA607CB243E91E700D0E349 /* PXTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTile.swift; sourceTree = "<group>"; };
-		DAA607CD243E92AD00D0E349 /* MetalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalUtils.swift; sourceTree = "<group>"; };
 		DAA607D2243E973800D0E349 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		DAA607D4243E9C7200D0E349 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		DAA607D72440ACFF00D0E349 /* PXTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTexture.swift; sourceTree = "<group>"; };
@@ -95,6 +97,10 @@
 		DAF1198F24461CE700208974 /* PXv3f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv3f.swift; sourceTree = "<group>"; };
 		DAF1199124461DCA00208974 /* PXv2f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv2f.swift; sourceTree = "<group>"; };
 		DAF119972446250600208974 /* PXResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXResourceManager.swift; sourceTree = "<group>"; };
+		DAF588952459FFBB00F273A0 /* PXFontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXFontManager.swift; sourceTree = "<group>"; };
+		DAF588982459FFC800F273A0 /* PXFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXFont.swift; sourceTree = "<group>"; };
+		DAF5889A245A10EC00F273A0 /* PXTextRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXTextRenderer.swift; sourceTree = "<group>"; };
+		DAF5889C245A128000F273A0 /* PXText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +138,7 @@
 				DAA607CB243E91E700D0E349 /* PXTile.swift */,
 				DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */,
 				DA8859AD24536A3C008C8E43 /* PXStaticSprite.swift */,
-				DAC5DDA42454846F00FFD590 /* PXLight.swift */,
+				DAF5889C245A128000F273A0 /* PXText.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -151,6 +157,7 @@
 				DA8859B024536C1E008C8E43 /* PXSpriteRenderer.swift */,
 				DA4C287924561F8C00BEF1D0 /* PXLightRenderer.swift */,
 				DA3EADBB2457325600452FFA /* PXCompositionRenderer.swift */,
+				DAF5889A245A10EC00F273A0 /* PXTextRenderer.swift */,
 			);
 			path = EntityRenderers;
 			sourceTree = "<group>";
@@ -188,10 +195,7 @@
 				DAA607C4243E893C00D0E349 /* Utils */,
 				DAA6079A243E86E400D0E349 /* PixeNgine.h */,
 				DAA6079B243E86E400D0E349 /* Info.plist */,
-				DAA607D72440ACFF00D0E349 /* PXTexture.swift */,
 				DAA607C2243E874600D0E349 /* PXRenderer.swift */,
-				DAA607E52440C4F300D0E349 /* PXConfig.swift */,
-				DAA6A1DF2440FD0100A9A620 /* PXCache.swift */,
 			);
 			path = PixeNgine;
 			sourceTree = "<group>";
@@ -216,9 +220,9 @@
 		DAA607C4243E893C00D0E349 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DAA607E52440C4F300D0E349 /* PXConfig.swift */,
 				DAA607C5243E895100D0E349 /* PXColor.swift */,
 				DAA607C7243E8C4900D0E349 /* Debug.swift */,
-				DAA607CD243E92AD00D0E349 /* MetalUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -256,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				DAA6A1E42443B1BA00A9A620 /* PXScene.swift */,
+				DAC5DDA42454846F00FFD590 /* PXLight.swift */,
 				DAF1198D24461BE400208974 /* PXSprite.swift */,
 			);
 			path = Scene;
@@ -264,8 +269,12 @@
 		DAF11996244624E500208974 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				DAA6A1DF2440FD0100A9A620 /* PXCache.swift */,
 				DAF119972446250600208974 /* PXResourceManager.swift */,
 				DAA607DD2440AEB600D0E349 /* PXTextureManager.swift */,
+				DAF588952459FFBB00F273A0 /* PXFontManager.swift */,
+				DAF588982459FFC800F273A0 /* PXFont.swift */,
+				DAA607D72440ACFF00D0E349 /* PXTexture.swift */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 				DAA60792243E86E400D0E349 /* Headers */,
 				DAA60793243E86E400D0E349 /* Sources */,
 				DAA60794243E86E400D0E349 /* Frameworks */,
+				DA3EADBD2459D98F00452FFA /* ShellScript */,
 				DAA60795243E86E400D0E349 /* Resources */,
 			);
 			buildRules = (
@@ -400,6 +410,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DA3EADBD2459D98F00452FFA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DAA60793243E86E400D0E349 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -408,10 +438,13 @@
 				DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */,
 				DA3EADBC2457325600452FFA /* PXCompositionRenderer.swift in Sources */,
 				DAA607D3243E973800D0E349 /* Shaders.metal in Sources */,
+				DAF5889B245A10EC00F273A0 /* PXTextRenderer.swift in Sources */,
 				DAF1199224461DCA00208974 /* PXv2f.swift in Sources */,
 				DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */,
 				DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */,
+				DAF588992459FFC800F273A0 /* PXFont.swift in Sources */,
 				DA4C287A24561F8C00BEF1D0 /* PXLightRenderer.swift in Sources */,
+				DAF588962459FFBB00F273A0 /* PXFontManager.swift in Sources */,
 				DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */,
 				DA8859AE24536A3C008C8E43 /* PXStaticSprite.swift in Sources */,
 				DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */,
@@ -422,12 +455,12 @@
 				DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */,
 				DAA607DC2440ADE500D0E349 /* PXRect.swift in Sources */,
 				DAA6A1DE2440D97800A9A620 /* Matrices.swift in Sources */,
+				DAF5889D245A128000F273A0 /* PXText.swift in Sources */,
 				DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */,
 				DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */,
 				DAA607C6243E895100D0E349 /* PXColor.swift in Sources */,
 				DAA6A1E02440FD0100A9A620 /* PXCache.swift in Sources */,
 				DA8859B124536C1E008C8E43 /* PXSpriteRenderer.swift in Sources */,
-				DAA607CE243E92AD00D0E349 /* MetalUtils.swift in Sources */,
 				DAF1199024461CE700208974 /* PXv3f.swift in Sources */,
 				DAF1198E24461BE400208974 /* PXSprite.swift in Sources */,
 				DAA6A1DB2440D76C00A9A620 /* PXCamera.swift in Sources */,

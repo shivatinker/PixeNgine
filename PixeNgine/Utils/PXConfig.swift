@@ -22,4 +22,8 @@ public class PXConfig {
     public static var resourceManager: PXResourceManager {
         _defaultrm
     }
+    private static var _defaultfm = PXFontManager()
+    public static var fontManager: PXFontManager {
+        _defaultfm
+    }
 }

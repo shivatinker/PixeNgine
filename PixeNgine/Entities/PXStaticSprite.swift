@@ -22,6 +22,7 @@ open class PXStaticSprite: PXSpritedEntity {
     // MARK: Conformance to PXSpritedEntity protocol
     public let name: String
     public var pos: PXv2f = .zero
+    public var light: PXLight?
     public var dimensions: PXv2f {
         Float(scale) * (animator.currentSprite?.dimensions ?? PXv2f.zero)
     }

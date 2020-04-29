@@ -15,10 +15,10 @@ public class PXCompositionRenderer {
         1.0, 1.0, 0.0]
     }
 
-    public func draw(encoder: MTLRenderCommandEncoder, entities: MTLTexture, lights: MTLTexture) {
+    public func draw(encoder: MTLRenderCommandEncoder, entities: MTLTexture, lights: MTLTexture, overlays: MTLTexture) {
         encoder.setRenderPipelineState(PXCache.getPipeline(PXCompositionPipeline.self)!)
 
-        encoder.setFragmentTextures([entities, lights], range: 1..<3)
+        encoder.setFragmentTextures([entities, lights, overlays], range: 1..<4)
         
         encoder.setVertexBytes(vertexData, length: MemoryLayout.size(ofValue: vertexData[0]) * vertexData.count, index: VertexAttribute.position.rawValue)
 

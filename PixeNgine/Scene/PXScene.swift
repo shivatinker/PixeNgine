@@ -18,7 +18,6 @@ public class PXScene {
     private var updateable = [Int: PXUpdateableEntity]()
     private var entities = [Int: PXEntity]()
     private var hud = [Int: PXEntity]()
-    private var lights = [Int: PXLight]()
 
 
     private struct TileXY: Hashable {
@@ -53,11 +52,6 @@ public class PXScene {
 //        if let u = entity as? PXUpdateableEntity {
 //            updateable[nextID] = u
 //        }
-        nextID += 1
-    }
-
-    public func addLight(_ light: PXLight) {
-        lights[nextID] = light
         nextID += 1
     }
 
@@ -112,15 +106,22 @@ public class PXScene {
 //        print("\(entities.count) entities.")
     }
 
-    
+
 
     public func renderLights(encoder: MTLRenderCommandEncoder) {
         // Lighting pass
-
         if let camera = camera {
+            var lights = [PXDrawableEntity]()
+
+            for e in entities.values {
+                if let d = (e as? PXDrawableEntity) {
+                    lights.append(d)
+                }
+            }
+
             let context = PXRendererContext(encoder: encoder, camera: camera)
             let r = PXLightRenderer()
-            r.draw(context: context, lights: lights.values.map({ $0 }))
+            r.draw(context: context, entities: lights)
         }
     }
 
@@ -143,7 +144,9 @@ public class PXScene {
                 }
             }
         }
+    }
 
+    public func renderOverlays(encoder: MTLRenderCommandEncoder) {
         if let hudCamera = hudCamera {
             //HUD renddering
             let hudContext = PXRendererContext(encoder: encoder, camera: hudCamera)

@@ -10,7 +10,7 @@ import Foundation
 
 public class PXLightRenderer {
 
-    
+
     private var vertexData: [Float] { [
         0.0, 0.0, 0.0,
         0.0, 1.0, 0.0,
@@ -18,7 +18,7 @@ public class PXLightRenderer {
         1.0, 1.0, 0.0]
     }
 
-    public func draw(context: PXRendererContext, lights: [PXLight]) {
+    public func draw(context: PXRendererContext, entities: [PXDrawableEntity]) {
         let encoder = context.encoder
         let camera = context.camera
 
@@ -40,17 +40,23 @@ public class PXLightRenderer {
         encoder.setVertexBytes(vertexData, length: MemoryLayout.size(ofValue: vertexData[0]) * vertexData.count, index: VertexAttribute.position.rawValue)
 
         var funiforms = LightsFragmentUniforms()
-        funiforms.light_count = Int32(lights.count)
+        funiforms.ambientColor = PXColor(r: 0.1, g: 0.1, b: 0.1, a: 1.0).vector
 
-        let light_bytes = lights.map({
-            Light(
-                pos: $0.pos.vec,
-                radius: $0.radius,
-                amount: $0.amount,
-                color: $0.color.vector)
+        let lightBytes = entities.compactMap({ (e) -> Light? in
+            if let l = e.light {
+                return Light(
+                    pos: e.center.vec,
+                    clipRadius: l.radius,
+                    amount: l.amount,
+                    color: l.color.vector)
+            }
+            return nil
         })
 
-        encoder.setFragmentBytes(light_bytes, length: MemoryLayout<Light>.stride * light_bytes.count, index: LightsFragmentBuffers.lights.rawValue)
+        funiforms.lightsCount = Int32(lightBytes.count)
+
+        // TODO: Create buffer instead of bytes
+        encoder.setFragmentBytes(lightBytes, length: MemoryLayout<Light>.stride * lightBytes.count, index: LightsFragmentBuffers.lights.rawValue)
 
         encoder.setFragmentBytes(&funiforms, length: MemoryLayout.size(ofValue: funiforms), index: LightsFragmentBuffers.uniforms.rawValue)
 

@@ -42,6 +42,7 @@ public class PXRenderer: NSObject {
 
     private var lightsTexture: MTLTexture!
     private var entitiesTexture: MTLTexture!
+    private var overlayTexture: MTLTexture!
 
     // MARK: Render pass descriptors
     private var lightsRenderPassDescriptor: MTLRenderPassDescriptor!
@@ -55,6 +56,13 @@ public class PXRenderer: NSObject {
     private func configureEntityPass() -> MTLRenderPassDescriptor {
         let descriptor = MTLRenderPassDescriptor()
         descriptor.setColorAttachment(index: 0, texture: entitiesTexture)
+        return descriptor
+    }
+
+    private var ovarlayRenderPassDescriptor: MTLRenderPassDescriptor!
+    private func configureOverlayPass() -> MTLRenderPassDescriptor {
+        let descriptor = MTLRenderPassDescriptor()
+        descriptor.setColorAttachment(index: 0, texture: overlayTexture)
         return descriptor
     }
 
@@ -82,11 +90,13 @@ public class PXRenderer: NSObject {
         mtkView.delegate = self
 
 
-        lightsTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Lights Texture")
-        entitiesTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Entities Texture")
+        lightsTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Lights")
+        entitiesTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Entities")
+        overlayTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Overlays")
 
         lightsRenderPassDescriptor = configureLightsPass()
         entityRenderPassDescriptor = configureEntityPass()
+        ovarlayRenderPassDescriptor = configureOverlayPass()
 
         pxDebug("Ready")
     }
@@ -138,15 +148,25 @@ extension PXRenderer: MTKViewDelegate {
             lightsEncoder.popDebugGroup()
             lightsEncoder.endEncoding()
 
+            // Render overlay
+
+            let overlayEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: ovarlayRenderPassDescriptor)!
+            overlayEncoder.label = "Overlay encoder"
+            overlayEncoder.pushDebugGroup("Overlay")
+            scene?.renderOverlays(encoder: overlayEncoder)
+            overlayEncoder.popDebugGroup()
+            overlayEncoder.endEncoding()
+
             // Combine textures and render on the screen
 
-//            frameRenderPass.setColorAttachment(index: 1, texture: entitiesTexture)
-//            frameRenderPass.setColorAttachment(index: 2, texture: lightsTexture)
             let compositionEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: frameRenderPass)!
             compositionEncoder.label = "Composition encoder"
             compositionEncoder.pushDebugGroup("Combine textures")
             let r = PXCompositionRenderer()
-            r.draw(encoder: compositionEncoder, entities: entitiesTexture, lights: lightsTexture)
+            r.draw(encoder: compositionEncoder,
+                   entities: entitiesTexture,
+                   lights: lightsTexture,
+                   overlays: overlayTexture)
             compositionEncoder.popDebugGroup()
 
             compositionEncoder.endEncoding()

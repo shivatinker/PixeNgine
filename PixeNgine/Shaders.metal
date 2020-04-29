@@ -80,18 +80,18 @@ fragment float4 fragment_lights(
                                 LVertexOut in [[stage_in]],
                                 constant Light* lights [[buffer(LightsFragmentBuffersLights)]],
                                 constant LightsFragmentUniforms &uniforms [[buffer(LightsFragmentBuffersUniforms)]]){
-    int count = uniforms.light_count;
-    float4 out = float4(0, 0, 0, 1);
+    int count = uniforms.lightsCount;
+    float4 out = float4(uniforms.ambientColor.xyz, 0);
     for(int i = 0; i < count; i++){
         Light cur = lights[i];
         float dist = length((float2)(in.worldPosition - cur.pos));
-        if(dist > cur.radius)
+        if(dist > cur.clipRadius)
             continue;
-        float intensity = saturate(cur.color.a * cur.amount / (0.01 + 0.01 * dist + 0.006 * dist * dist));
+        float intensity = saturate(cur.amount / (1 + 0.005 * dist * dist));
         float4 lcol = float4(cur.color.rgb, 0) * intensity;
         out += lcol;
     }
-    return out;
+    return saturate(out);
 }
 
 // Composition shaders
@@ -117,9 +117,12 @@ vertex CVertexOut vertex_composition(CVertex in [[stage_in]])
 
 fragment float4 fragment_composition(CVertexOut in [[stage_in]],
                                 texture2d<float> entities [[texture(1)]],
-                                texture2d<float> lights [[texture(2)]]){
+                                texture2d<float> lights [[texture(2)]],
+                                texture2d<float> overlays [[texture(3)]]){
     constexpr sampler colorSampler(filter::nearest);
     float4 entitiesColor = entities.sample(colorSampler, in.texcoords);
     float4 lightsColor = lights.sample(colorSampler, in.texcoords);
-    return entitiesColor + entitiesColor * lightsColor * 3.0;
+    float4 overlaysColor = overlays.sample(colorSampler, in.texcoords);
+    float4 sceneColor = entitiesColor * lightsColor * (1 - lightsColor.a) + lightsColor * lightsColor.a;
+    return float4((sceneColor * (1 - overlaysColor.a) + overlaysColor * overlaysColor.a).rgb, 1.0);
 }
