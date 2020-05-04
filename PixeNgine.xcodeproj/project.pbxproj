@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */; };
 		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
 		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
 		DAA607A1243E86E400D0E349 /* PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA60797243E86E400D0E349 /* PixeNgine.framework */; };
@@ -41,6 +42,7 @@
 		DAF588A4245DEA1900F273A0 /* PXDrawContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A3245DEA1900F273A0 /* PXDrawContext.swift */; };
 		DAF588A6245E040B00F273A0 /* PXSpriteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */; };
 		DAF588AA2460929100F273A0 /* PXStaticSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A92460929100F273A0 /* PXStaticSprite.swift */; };
+		F567CDA78BC078C7EE17C378 /* Pods_PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixeNgine_PixeNgineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B639068D2C299094C8E013B /* Pods-PixeNgine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine.debug.xcconfig"; path = "Target Support Files/Pods-PixeNgine/Pods-PixeNgine.debug.xcconfig"; sourceTree = "<group>"; };
+		A0F8ED36DD8D9764CE96264A /* Pods-PixeNgine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine/Pods-PixeNgine.release.xcconfig"; sourceTree = "<group>"; };
+		B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
 		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
 		DAA60797243E86E400D0E349 /* PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +106,7 @@
 		DAF588A3245DEA1900F273A0 /* PXDrawContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXDrawContext.swift; sourceTree = "<group>"; };
 		DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpriteDrawable.swift; sourceTree = "<group>"; };
 		DAF588A92460929100F273A0 /* PXStaticSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXStaticSprite.swift; sourceTree = "<group>"; };
+		F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F567CDA78BC078C7EE17C378 /* Pods_PixeNgine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +123,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA607A1243E86E400D0E349 /* PixeNgine.framework in Frameworks */,
+				6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		638A19302AD569892BB0A603 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B639068D2C299094C8E013B /* Pods-PixeNgine.debug.xcconfig */,
+				A0F8ED36DD8D9764CE96264A /* Pods-PixeNgine.release.xcconfig */,
+				F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */,
+				B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6EC57497E6F6FC4C6428E811 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */,
+				5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA63B7C82450A0EF004DA60F /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +187,8 @@
 				DAA60799243E86E400D0E349 /* PixeNgine */,
 				DAA607A4243E86E400D0E349 /* PixeNgineTests */,
 				DAA60798243E86E400D0E349 /* Products */,
+				638A19302AD569892BB0A603 /* Pods */,
+				6EC57497E6F6FC4C6428E811 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +352,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA607AB243E86E400D0E349 /* Build configuration list for PBXNativeTarget "PixeNgine" */;
 			buildPhases = (
+				B823437AC135F805113E9570 /* [CP] Check Pods Manifest.lock */,
 				DAA60792243E86E400D0E349 /* Headers */,
 				DAA60793243E86E400D0E349 /* Sources */,
 				DAA60794243E86E400D0E349 /* Frameworks */,
@@ -338,9 +372,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA607AE243E86E400D0E349 /* Build configuration list for PBXNativeTarget "PixeNgineTests" */;
 			buildPhases = (
+				57EFCBA8F93EA8CDEA02C8B2 /* [CP] Check Pods Manifest.lock */,
 				DAA6079C243E86E400D0E349 /* Sources */,
 				DAA6079D243E86E400D0E349 /* Frameworks */,
 				DAA6079E243E86E400D0E349 /* Resources */,
+				7217735F70A8868C29152596 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -424,6 +460,67 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		57EFCBA8F93EA8CDEA02C8B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PixeNgine-PixeNgineTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7217735F70A8868C29152596 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B823437AC135F805113E9570 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PixeNgine-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DA3EADBD2459D98F00452FFA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,6 +721,7 @@
 		};
 		DAA607AC243E86E400D0E349 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B639068D2C299094C8E013B /* Pods-PixeNgine.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -650,6 +748,7 @@
 		};
 		DAA607AD243E86E400D0E349 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0F8ED36DD8D9764CE96264A /* Pods-PixeNgine.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -675,6 +774,7 @@
 		};
 		DAA607AF243E86E400D0E349 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -694,6 +794,7 @@
 		};
 		DAA607B0243E86E400D0E349 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
