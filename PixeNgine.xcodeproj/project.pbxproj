@@ -171,19 +171,11 @@
 		DAA60799243E86E400D0E349 /* PixeNgine */ = {
 			isa = PBXGroup;
 			children = (
-				DAF588A2245DE9E300F273A0 /* Draw */,
-				DA8859AB24536087008C8E43 /* Entities */,
-				DA63B7C82450A0EF004DA60F /* Components */,
-				DAF11996244624E500208974 /* Res */,
-				DAA6A1E92443B7A500A9A620 /* Scene */,
-				DAA6A1E12441025D00A9A620 /* Pipelines */,
-				DAA607DA2440ADDA00D0E349 /* Misc */,
-				DAA607D2243E973800D0E349 /* Shaders.metal */,
-				DAA607CF243E972200D0E349 /* Metal */,
+				DACC328B2460CD5500358A7F /* Lua */,
+				DAF657D22460CDCD00453FDA /* Graphics */,
 				DAA607C4243E893C00D0E349 /* Utils */,
 				DAA6079A243E86E400D0E349 /* PixeNgine.h */,
 				DAA6079B243E86E400D0E349 /* Info.plist */,
-				DAA607C2243E874600D0E349 /* PXRenderer.swift */,
 			);
 			path = PixeNgine;
 			sourceTree = "<group>";
@@ -254,6 +246,13 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		DACC328B2460CD5500358A7F /* Lua */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lua;
+			sourceTree = "<group>";
+		};
 		DAF11996244624E500208974 /* Res */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +281,23 @@
 				DAA6A1E72443B63800A9A620 /* PXEntity.swift */,
 			);
 			path = Abstract;
+			sourceTree = "<group>";
+		};
+		DAF657D22460CDCD00453FDA /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				DAA607C2243E874600D0E349 /* PXRenderer.swift */,
+				DAF588A2245DE9E300F273A0 /* Draw */,
+				DA8859AB24536087008C8E43 /* Entities */,
+				DA63B7C82450A0EF004DA60F /* Components */,
+				DAF11996244624E500208974 /* Res */,
+				DAA6A1E92443B7A500A9A620 /* Scene */,
+				DAA6A1E12441025D00A9A620 /* Pipelines */,
+				DAA607DA2440ADDA00D0E349 /* Misc */,
+				DAA607D2243E973800D0E349 /* Shaders.metal */,
+				DAA607CF243E972200D0E349 /* Metal */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
