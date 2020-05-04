@@ -7,29 +7,44 @@
 //
 
 import Foundation
-public protocol PXEntity: AnyObject {
-    var pos: PXv2f { get set }
-    var dimensions: PXv2f { get }
-    var name: String { get }
-    var visible: Bool { get }
-    var outOfBoundsDiscardable: Bool { get }
+
+public enum PXRenderMode {
+    case scene
+    case hud
+}
+
+open class PXEntity {
+    // Common fields
+    public var pos: PXv2f = .zero
+    public var name: String
+    open var dimensions: PXv2f { .zero }
+    public var shouldBeRemoved: Bool = false
+    public var renderMode: PXRenderMode = .scene
+
+    // Common methods
+    open func update() {
+
+    }
+    open func draw(context: PXDrawContext) {
+
+    }
+
+    public init(name: String) {
+        self.name = name
+    }
+
+    deinit {
+        pxDebug("Entity \(name) deleted")
+    }
 }
 
 public extension PXEntity {
     var center: PXv2f {
-        get {
-            pos + 0.5 * dimensions
-        }
-        set {
-            pos = newValue - 0.5 * dimensions
-        }
+        get { pos + 0.5 * dimensions }
+        set { pos = newValue - 0.5 * dimensions }
     }
-    var width: Float {
-        dimensions.x
-    }
-    var height: Float {
-        dimensions.y
-    }
+    var width: Float { dimensions.x }
+    var height: Float { dimensions.y }
 
     var rect: PXRect {
         PXRect(
@@ -43,19 +58,4 @@ public extension PXEntity {
         return pos.x <= point.x && point.x <= pos.x + width &&
             pos.y <= point.y && point.y <= pos.y + height
     }
-}
-
-public protocol PXUpdateableEntity: PXEntity {
-    func onFrame()
-}
-
-public protocol PXDrawableEntity: PXEntity {
-    var opacity: Float { get }
-    var brightness: Float { get }
-    var light: PXLight? { get }
-    func draw(context: PXRendererContext)
-}
-
-public protocol PXSpritedEntity: PXDrawableEntity {
-    var currentSprite: PXSprite? { get }
 }

@@ -2,47 +2,25 @@
 //  PXStaticSprite.swift
 //  PixeNgine
 //
-//  Created by Andrii Zinoviev on 24.04.2020.
+//  Created by Andrii Zinoviev on 04.05.2020.
 //  Copyright © 2020 Andrii Zinoviev. All rights reserved.
 //
 
 import Foundation
 
-public class PXStaticAnimator: PXAnimator {
-    public var currentSprite: PXSprite?
-}
-
-extension PXStaticSprite: PXDrawableEntity {
-    public func draw(context: PXRendererContext) {
-        renderer.draw(context: context)
+public class PXStaticSprite: PXEntity {
+    public override var dimensions: PXv2f {
+        drawable.dimensions
     }
-}
 
-open class PXStaticSprite: PXSpritedEntity {
-    // MARK: Conformance to PXSpritedEntity protocol
-    public let name: String
-    public var pos: PXv2f = .zero
-    public var light: PXLight?
-    public var dimensions: PXv2f {
-        Float(scale) * (animator.currentSprite?.dimensions ?? PXv2f.zero)
+    public var drawable = PXSpriteDrawable()
+
+    public override func draw(context: PXDrawContext) {
+        drawable.draw(entity: self, context: context)
     }
-    public var currentSprite: PXSprite? {
-        animator.currentSprite
-    }
-    open var visible: Bool = true
-    open var outOfBoundsDiscardable: Bool { false }
-    open var opacity: Float { 1.0 }
-    open var brightness: Float { 1.0 }
 
-    // MARK: Components
-
-    public var animator = PXStaticAnimator()
-    public var renderer = PXSpriteRenderer()
-
-    public var scale: Int = 1
-
-    public init(name: String) {
-        self.name = name
-        renderer.parent = self
+    public init(name: String, sprite: PXSprite) {
+        super.init(name: name)
+        drawable.sprite = sprite
     }
 }

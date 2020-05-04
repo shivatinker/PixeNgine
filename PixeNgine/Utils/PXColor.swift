@@ -20,7 +20,7 @@ public struct PXColor {
     }
     
     public var r, g, b, a: Float
-    public var vector: SIMD4<Float> {
+    public var vec: SIMD4<Float> {
         SIMD4<Float>(r, g, b, a)
     }
     public var uiColor: UIColor {

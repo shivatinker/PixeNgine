@@ -12,10 +12,12 @@ public protocol PXComponent: AnyObject {
 
 }
 
-public protocol PXEntityRenderer: PXComponent {
-    func draw(context: PXRendererContext)
+public protocol PXEntityController: PXComponent {
+    func update(entity: PXEntity)
 }
 
-public protocol PXAnimator: PXComponent {
-    var currentSprite: PXSprite? { get }
+public protocol PXDrawable: PXComponent {
+    var visible: Bool { get set }
+    var opacity: Float { get set }
+    var brightness: Float { get set }
 }

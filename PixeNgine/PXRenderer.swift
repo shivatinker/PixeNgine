@@ -114,10 +114,6 @@ private extension MTLRenderPassDescriptor {
 }
 
 // MARK: Main rendering loop
-public struct PXRendererContext {
-    var encoder: MTLRenderCommandEncoder
-    var camera: PXCamera
-}
 
 extension PXRenderer: MTKViewDelegate {
     public func draw(in view: MTKView) {
@@ -148,8 +144,7 @@ extension PXRenderer: MTKViewDelegate {
             lightsEncoder.popDebugGroup()
             lightsEncoder.endEncoding()
 
-            // Render overlay
-
+            // Render overlay into texture
             let overlayEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: ovarlayRenderPassDescriptor)!
             overlayEncoder.label = "Overlay encoder"
             overlayEncoder.pushDebugGroup("Overlay")
@@ -158,17 +153,9 @@ extension PXRenderer: MTKViewDelegate {
             overlayEncoder.endEncoding()
 
             // Combine textures and render on the screen
-
             let compositionEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: frameRenderPass)!
             compositionEncoder.label = "Composition encoder"
-            compositionEncoder.pushDebugGroup("Combine textures")
-            let r = PXCompositionRenderer()
-            r.draw(encoder: compositionEncoder,
-                   entities: entitiesTexture,
-                   lights: lightsTexture,
-                   overlays: overlayTexture)
-            compositionEncoder.popDebugGroup()
-
+            compositionEncoder.compose(entities: entitiesTexture, lights: lightsTexture, overlay: overlayTexture)
             compositionEncoder.endEncoding()
 
 
@@ -181,5 +168,18 @@ extension PXRenderer: MTKViewDelegate {
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         screenSize = size
+    }
+}
+
+private extension MTLRenderCommandEncoder {
+    func compose(entities: MTLTexture, lights: MTLTexture, overlay: MTLTexture) {
+        pushDebugGroup("Combine textures")
+        setRenderPipelineState(PXCache.getPipeline(PXCompositionPipeline.self)!)
+        setFragmentTextures([entities, lights, overlay], range: 1..<4)
+        setVertexBytes(Meshes.screenQuad,
+                       length: MemoryLayout.size(ofValue: Meshes.screenQuad[0]) * Meshes.screenQuad.count,
+                       index: VertexAttribute.position.rawValue)
+        drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: Meshes.screenQuad.count / 3)
+        popDebugGroup()
     }
 }

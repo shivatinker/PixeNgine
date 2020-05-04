@@ -15,10 +15,10 @@ public class PXScene {
     // MARK: Private members
     private var nextID = 0
 
-    private var updateable = [Int: PXUpdateableEntity]()
-    private var entities = [Int: PXEntity]()
-    private var hud = [Int: PXEntity]()
+    private var sceneEntities = [Int]()
+    private var hud = [Int]()
 
+    private var entities = [Int: PXEntity]()
 
     private struct TileXY: Hashable {
         var x, y: Int
@@ -26,7 +26,6 @@ public class PXScene {
     private var background = [TileXY: PXTile?]()
 
     // MARK: Public API
-
     public var width: Int
     public var height: Int
     public var bounds: PXRect {
@@ -41,17 +40,13 @@ public class PXScene {
 
     public func addEntity(_ entity: PXEntity) {
         entities[nextID] = entity
-        if let u = entity as? PXUpdateableEntity {
-            updateable[nextID] = u
-        }
+        sceneEntities.append(nextID)
         nextID += 1
     }
 
     public func addHudEntity(_ entity: PXEntity) {
-        hud[nextID] = entity
-//        if let u = entity as? PXUpdateableEntity {
-//            updateable[nextID] = u
-//        }
+        entities[nextID] = entity
+        hud.append(nextID)
         nextID += 1
     }
 
@@ -89,45 +84,38 @@ public class PXScene {
         self.height = height
     }
 
-    public func updateScene() {
-        for u in updateable.values {
-            u.onFrame()
-        }
-
-        var outOfBounds = Set<Int>()
-        for kv in entities {
-            if kv.value.outOfBoundsDiscardable && !bounds.isInside(kv.value.pos) {
-                outOfBounds.insert(kv.key)
-            }
-        }
-
-        outOfBounds.forEach({ entities.removeValue(forKey: $0) })
-        outOfBounds.forEach({ updateable.removeValue(forKey: $0) })
-//        print("\(entities.count) entities.")
+    private func removeEntity(_ id: Int) {
+        entities.removeValue(forKey: id)
+        sceneEntities.removeAll(where: { $0 == id })
+        hud.removeAll(where: { $0 == id })
     }
 
-
+    public func updateScene() {
+        entities.values.forEach({ $0.update() })
+        let shouldBeRemoved = entities.compactMap({ kv -> Int? in
+            if kv.value.shouldBeRemoved {
+                return kv.key
+            }
+            return nil
+        })
+        if !shouldBeRemoved.isEmpty {
+            shouldBeRemoved.forEach({ entities[$0] = nil })
+        }
+    }
 
     public func renderLights(encoder: MTLRenderCommandEncoder) {
         // Lighting pass
         if let camera = camera {
-            var lights = [PXDrawableEntity]()
-
-            for e in entities.values {
-                if let d = (e as? PXDrawableEntity) {
-                    lights.append(d)
-                }
-            }
-
-            let context = PXRendererContext(encoder: encoder, camera: camera)
-            let r = PXLightRenderer()
-            r.draw(context: context, entities: lights)
+            let context = PXDrawContext(encoder: encoder, camera: camera)
+            context.drawLights(
+                ambientColor: PXColor(r: 0.1, g: 0.1, b: 0.1, a: 1.0),
+                lights: entities.values.compactMap({ $0 as? PXLight }))
         }
     }
 
     public func renderScene(encoder: MTLRenderCommandEncoder) {
         if let camera = camera {
-            let context = PXRendererContext(encoder: encoder, camera: camera)
+            let context = PXDrawContext(encoder: encoder, camera: camera)
 
             //Optimized background rendering
             let bgBounds = camera.backgroundBounds
@@ -137,25 +125,32 @@ public class PXScene {
                 }
             }
             //Entities rendering
-            for e in entities.values {
-                if let d = e as? PXDrawableEntity,
-                    d.visible {
-                    d.draw(context: context)
+            sceneEntities.forEach({
+                if let e = entities[$0],
+                    e.renderMode == .scene {
+                    e.draw(context: context)
                 }
-            }
+            })
         }
     }
 
     public func renderOverlays(encoder: MTLRenderCommandEncoder) {
-        if let hudCamera = hudCamera {
+        if let hudCamera = hudCamera,
+            let camera = camera {
             //HUD renddering
-            let hudContext = PXRendererContext(encoder: encoder, camera: hudCamera)
-            for e in hud.values {
-                if let d = e as? PXDrawableEntity,
-                    d.visible {
-                    d.draw(context: hudContext)
+            let sceneHudContext = PXDrawContext(encoder: encoder, camera: camera)
+            sceneEntities.forEach({
+                if let e = entities[$0],
+                    e.renderMode == .hud {
+                    e.draw(context: sceneHudContext)
                 }
-            }
+            })
+            let hudContext = PXDrawContext(encoder: encoder, camera: hudCamera)
+            hud.forEach({
+                if let e = entities[$0] {
+                    e.draw(context: hudContext)
+                }
+            })
         }
     }
 }

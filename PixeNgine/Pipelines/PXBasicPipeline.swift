@@ -9,7 +9,7 @@
 import Foundation
 import Metal
 
-class PXSpritePipeline: PXPipeline {
+class PXBasicPipeline: PXPipeline {
     
     private static let vertexShaderName = "vertex_basic"
     private static let fragmentShaderName = "fragment_basic"
