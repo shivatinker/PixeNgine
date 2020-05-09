@@ -90,6 +90,8 @@ fragment float4 fragment_lights(
         float intensity = saturate(cur.amount / (1 + 0.005 * dist * dist));
         float4 lcol = float4(cur.color.rgb, 0) * intensity;
         out += lcol;
+        if(out.r + out.g + out.b > 240 * 3)
+            break;
     }
     return saturate(out);
 }

@@ -8,6 +8,24 @@
 
 import Foundation
 
+extension PXv2f: LuaCompatible {
+    public static func fromLua(_ v: LuaValue?) -> PXv2f? {
+        if case let .table(kv) = v,
+            let x = Float.fromLua(kv["x"] ?? nil),
+            let y = Float.fromLua(kv["y"] ?? nil) {
+            return PXv2f(x, y)
+        }
+        return nil
+    }
+
+    public var luaValue: LuaValue {
+        return .table([
+            "x": x.luaValue,
+            "y": y.luaValue
+        ])
+    }
+}
+
 public struct PXv2f {
     public static let zero = PXv2f(0, 0)
     public static let ones = PXv2f(1, 1)

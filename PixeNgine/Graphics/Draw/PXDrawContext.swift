@@ -21,6 +21,7 @@ public struct PXDrawParams {
 
 // Struct that represents some context, that can draw things
 public struct PXDrawContext {
+    public var device: MTLDevice
     public var encoder: MTLRenderCommandEncoder
     public var camera: PXCamera
 
@@ -150,8 +151,8 @@ public extension PXDrawContext {
 
         funiforms.lightsCount = Int32(lightBytes.count)
 
-        // TODO: Create buffer instead of bytes
-        encoder.setFragmentBytes(lightBytes, length: MemoryLayout<Light>.stride * lightBytes.count, index: LightsFragmentBuffers.lights.rawValue)
+        let buf = device.makeBuffer(bytes: lightBytes, length: MemoryLayout<Light>.stride * lightBytes.count, options: .cpuCacheModeWriteCombined)
+        encoder.setFragmentBuffer(buf, offset: 0, index: LightsFragmentBuffers.lights.rawValue)
 
         encoder.setFragmentBytes(&funiforms, length: MemoryLayout.size(ofValue: funiforms), index: LightsFragmentBuffers.uniforms.rawValue)
 

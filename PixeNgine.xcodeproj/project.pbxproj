@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */; };
+		DA20C97A2461DA9E00BFDF34 /* LuaCModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */; };
 		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
 		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
+		DA92B30B2461E79000522899 /* LuaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B30A2461E79000522899 /* LuaTypes.swift */; };
+		DA92B30F246324E100522899 /* LuaLModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B30E246324E100522899 /* LuaLModule.swift */; };
+		DA92B34624674CEE00522899 /* LuaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B34524674CEE00522899 /* LuaTests.swift */; };
+		DA92B34824674E1700522899 /* testimpl.lua in Resources */ = {isa = PBXBuildFile; fileRef = DA92B34724674E1700522899 /* testimpl.lua */; };
 		DAA607A1243E86E400D0E349 /* PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA60797243E86E400D0E349 /* PixeNgine.framework */; };
 		DAA607A6243E86E400D0E349 /* PixeNgineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA607A5243E86E400D0E349 /* PixeNgineTests.swift */; };
 		DAA607A8243E86E400D0E349 /* PixeNgine.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA6079A243E86E400D0E349 /* PixeNgine.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +36,66 @@
 		DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6A1E72443B63800A9A620 /* PXEntity.swift */; };
 		DAC5DDA52454846F00FFD590 /* PXLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5DDA42454846F00FFD590 /* PXLight.swift */; };
 		DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */; };
+		DACAB7622460E8B300D3E75A /* LuaWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7602460E7AA00D3E75A /* LuaWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7642460E92500D3E75A /* LuaWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7632460E92500D3E75A /* LuaWrapper.m */; };
+		DACAB7E22460ED2F00D3E75A /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7972460ECA800D3E75A /* lapi.c */; };
+		DACAB7E32460ED2F00D3E75A /* lapi.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7762460ECA300D3E75A /* lapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7E42460ED2F00D3E75A /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7712460ECA200D3E75A /* lauxlib.c */; };
+		DACAB7E52460ED2F00D3E75A /* lauxlib.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB76E2460ECA200D3E75A /* lauxlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7E62460ED2F00D3E75A /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB76B2460ECA100D3E75A /* lbaselib.c */; };
+		DACAB7E72460ED2F00D3E75A /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB79F2460ECA900D3E75A /* lbitlib.c */; };
+		DACAB7E82460ED2F00D3E75A /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7952460ECA800D3E75A /* lcode.c */; };
+		DACAB7E92460ED2F00D3E75A /* lcode.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB76C2460ECA100D3E75A /* lcode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7EA2460ED2F00D3E75A /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7A22460ECAA00D3E75A /* lcorolib.c */; };
+		DACAB7EB2460ED2F00D3E75A /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7942460ECA700D3E75A /* lctype.c */; };
+		DACAB7EC2460ED2F00D3E75A /* lctype.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7982460ECA800D3E75A /* lctype.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7ED2460ED2F00D3E75A /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7922460ECA700D3E75A /* ldblib.c */; };
+		DACAB7EE2460ED2F00D3E75A /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB79B2460ECA900D3E75A /* ldebug.c */; };
+		DACAB7EF2460ED2F00D3E75A /* ldebug.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB79E2460ECA900D3E75A /* ldebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7F02460ED2F00D3E75A /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7A12460ECA900D3E75A /* ldo.c */; };
+		DACAB7F12460ED2F00D3E75A /* ldo.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7782460ECA300D3E75A /* ldo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7F22460ED2F00D3E75A /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7772460ECA300D3E75A /* ldump.c */; };
+		DACAB7F32460ED2F00D3E75A /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7A02460ECA900D3E75A /* lfunc.c */; };
+		DACAB7F42460ED2F00D3E75A /* lfunc.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7992460ECA800D3E75A /* lfunc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7F52460ED2F00D3E75A /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB79C2460ECA900D3E75A /* lgc.c */; };
+		DACAB7F62460ED2F00D3E75A /* lgc.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7802460ECA400D3E75A /* lgc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7F72460ED2F00D3E75A /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB77E2460ECA400D3E75A /* linit.c */; };
+		DACAB7F82460ED2F00D3E75A /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB77D2460ECA400D3E75A /* liolib.c */; };
+		DACAB7F92460ED2F00D3E75A /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7722460ECA200D3E75A /* llex.c */; };
+		DACAB7FA2460ED2F00D3E75A /* llex.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7702460ECA200D3E75A /* llex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7FB2460ED2F00D3E75A /* llimits.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7682460ECA100D3E75A /* llimits.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7FC2460ED2F00D3E75A /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7852460ECA500D3E75A /* lmathlib.c */; };
+		DACAB7FD2460ED2F00D3E75A /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7962460ECA800D3E75A /* lmem.c */; };
+		DACAB7FE2460ED2F00D3E75A /* lmem.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB78E2460ECA700D3E75A /* lmem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB7FF2460ED2F00D3E75A /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7732460ECA300D3E75A /* loadlib.c */; };
+		DACAB8002460ED2F00D3E75A /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB79D2460ECA900D3E75A /* lobject.c */; };
+		DACAB8012460ED2F00D3E75A /* lobject.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7832460ECA500D3E75A /* lobject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8022460ED2F00D3E75A /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7812460ECA500D3E75A /* lopcodes.c */; };
+		DACAB8032460ED2F00D3E75A /* lopcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7842460ECA500D3E75A /* lopcodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8052460ED2F00D3E75A /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB78F2460ECA700D3E75A /* lparser.c */; };
+		DACAB8062460ED2F00D3E75A /* lparser.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7882460ECA600D3E75A /* lparser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8072460ED2F00D3E75A /* lprefix.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB78C2460ECA600D3E75A /* lprefix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8082460ED2F00D3E75A /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB77A2460ECA400D3E75A /* lstate.c */; };
+		DACAB8092460ED2F00D3E75A /* lstate.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7A32460ECAA00D3E75A /* lstate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB80A2460ED2F00D3E75A /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB77F2460ECA400D3E75A /* lstring.c */; };
+		DACAB80B2460ED2F00D3E75A /* lstring.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7A42460ECAA00D3E75A /* lstring.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB80C2460ED2F00D3E75A /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7752460ECA300D3E75A /* lstrlib.c */; };
+		DACAB80D2460ED2F00D3E75A /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7872460ECA500D3E75A /* ltable.c */; };
+		DACAB80E2460ED2F00D3E75A /* ltable.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB79A2460ECA800D3E75A /* ltable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB80F2460ED2F00D3E75A /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7692460ECA100D3E75A /* ltablib.c */; };
+		DACAB8102460ED2F00D3E75A /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7912460ECA700D3E75A /* ltm.c */; };
+		DACAB8112460ED2F00D3E75A /* ltm.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB77B2460ECA400D3E75A /* ltm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8132460ED2F00D3E75A /* lua.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7862460ECA500D3E75A /* lua.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8142460ED2F00D3E75A /* lua.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7792460ECA400D3E75A /* lua.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8162460ED2F00D3E75A /* luaconf.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB77C2460ECA400D3E75A /* luaconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8172460ED2F00D3E75A /* lualib.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB78B2460ECA600D3E75A /* lualib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB8182460ED2F00D3E75A /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7932460ECA700D3E75A /* lundump.c */; };
+		DACAB8192460ED2F00D3E75A /* lundump.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB76D2460ECA200D3E75A /* lundump.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB81A2460ED2F00D3E75A /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB78A2460ECA600D3E75A /* lutf8lib.c */; };
+		DACAB81B2460ED2F00D3E75A /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7742460ECA300D3E75A /* lvm.c */; };
+		DACAB81C2460ED2F00D3E75A /* lvm.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB76A2460ECA100D3E75A /* lvm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DACAB81D2460ED2F00D3E75A /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = DACAB7892460ECA600D3E75A /* lzio.c */; };
+		DACAB81E2460ED2F00D3E75A /* lzio.h in Headers */ = {isa = PBXBuildFile; fileRef = DACAB7822460ECA500D3E75A /* lzio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAF1198E24461BE400208974 /* PXSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198D24461BE400208974 /* PXSprite.swift */; };
 		DAF1199024461CE700208974 /* PXv3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1198F24461CE700208974 /* PXv3f.swift */; };
 		DAF1199224461DCA00208974 /* PXv2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1199124461DCA00208974 /* PXv2f.swift */; };
@@ -42,7 +107,9 @@
 		DAF588A4245DEA1900F273A0 /* PXDrawContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A3245DEA1900F273A0 /* PXDrawContext.swift */; };
 		DAF588A6245E040B00F273A0 /* PXSpriteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */; };
 		DAF588AA2460929100F273A0 /* PXStaticSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF588A92460929100F273A0 /* PXStaticSprite.swift */; };
-		F567CDA78BC078C7EE17C378 /* Pods_PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; };
+		DAF657DD2460D47500453FDA /* LuaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF657DC2460D47500453FDA /* LuaVM.swift */; };
+		DAF657E82460D97900453FDA /* Pods_PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; };
+		DAF657E92460D97900453FDA /* Pods_PixeNgine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,14 +120,21 @@
 			remoteGlobalIDString = DAA60796243E86E400D0E349;
 			remoteInfo = PixeNgine;
 		};
-		DAA607BB243E870900D0E349 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DAA60776243E86CA00D0E349;
-			remoteInfo = "PixEngine-Test";
-		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAF657EA2460D97900453FDA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DAF657E92460D97900453FDA /* Pods_PixeNgine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,15 +142,19 @@
 		5B639068D2C299094C8E013B /* Pods-PixeNgine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine.debug.xcconfig"; path = "Target Support Files/Pods-PixeNgine/Pods-PixeNgine.debug.xcconfig"; sourceTree = "<group>"; };
 		A0F8ED36DD8D9764CE96264A /* Pods-PixeNgine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine/Pods-PixeNgine.release.xcconfig"; sourceTree = "<group>"; };
 		B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.release.xcconfig"; sourceTree = "<group>"; };
+		DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaCModule.swift; sourceTree = "<group>"; };
 		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
 		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
+		DA92B30A2461E79000522899 /* LuaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaTypes.swift; sourceTree = "<group>"; };
+		DA92B30E246324E100522899 /* LuaLModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaLModule.swift; sourceTree = "<group>"; };
+		DA92B34524674CEE00522899 /* LuaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaTests.swift; sourceTree = "<group>"; };
+		DA92B34724674E1700522899 /* testimpl.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = testimpl.lua; sourceTree = "<group>"; };
 		DAA60797243E86E400D0E349 /* PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA6079A243E86E400D0E349 /* PixeNgine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixeNgine.h; sourceTree = "<group>"; };
 		DAA6079B243E86E400D0E349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAA607A0243E86E400D0E349 /* PixeNgineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixeNgineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA607A5243E86E400D0E349 /* PixeNgineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixeNgineTests.swift; sourceTree = "<group>"; };
 		DAA607A7243E86E400D0E349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "PixEngine-Test.xcodeproj"; path = "../PixEngine-Test/PixEngine-Test.xcodeproj"; sourceTree = "<group>"; };
 		DAA607C2243E874600D0E349 /* PXRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXRenderer.swift; sourceTree = "<group>"; };
 		DAA607C5243E895100D0E349 /* PXColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXColor.swift; sourceTree = "<group>"; };
 		DAA607C7243E8C4900D0E349 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -95,6 +173,69 @@
 		DAA6A1E72443B63800A9A620 /* PXEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXEntity.swift; sourceTree = "<group>"; };
 		DAC5DDA42454846F00FFD590 /* PXLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXLight.swift; sourceTree = "<group>"; };
 		DAC5DDA72454851700FFD590 /* PXLightPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXLightPipeline.swift; sourceTree = "<group>"; };
+		DACAB7602460E7AA00D3E75A /* LuaWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuaWrapper.h; sourceTree = "<group>"; };
+		DACAB7632460E92500D3E75A /* LuaWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LuaWrapper.m; sourceTree = "<group>"; };
+		DACAB7682460ECA100D3E75A /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
+		DACAB7692460ECA100D3E75A /* ltablib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltablib.c; sourceTree = "<group>"; };
+		DACAB76A2460ECA100D3E75A /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
+		DACAB76B2460ECA100D3E75A /* lbaselib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbaselib.c; sourceTree = "<group>"; };
+		DACAB76C2460ECA100D3E75A /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
+		DACAB76D2460ECA200D3E75A /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
+		DACAB76E2460ECA200D3E75A /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
+		DACAB76F2460ECA200D3E75A /* loslib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loslib.c; sourceTree = "<group>"; };
+		DACAB7702460ECA200D3E75A /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
+		DACAB7712460ECA200D3E75A /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
+		DACAB7722460ECA200D3E75A /* llex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = llex.c; sourceTree = "<group>"; };
+		DACAB7732460ECA300D3E75A /* loadlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loadlib.c; sourceTree = "<group>"; };
+		DACAB7742460ECA300D3E75A /* lvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lvm.c; sourceTree = "<group>"; };
+		DACAB7752460ECA300D3E75A /* lstrlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstrlib.c; sourceTree = "<group>"; };
+		DACAB7762460ECA300D3E75A /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
+		DACAB7772460ECA300D3E75A /* ldump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldump.c; sourceTree = "<group>"; };
+		DACAB7782460ECA300D3E75A /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
+		DACAB7792460ECA400D3E75A /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
+		DACAB77A2460ECA400D3E75A /* lstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstate.c; sourceTree = "<group>"; };
+		DACAB77B2460ECA400D3E75A /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
+		DACAB77C2460ECA400D3E75A /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
+		DACAB77D2460ECA400D3E75A /* liolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = liolib.c; sourceTree = "<group>"; };
+		DACAB77E2460ECA400D3E75A /* linit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = linit.c; sourceTree = "<group>"; };
+		DACAB77F2460ECA400D3E75A /* lstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstring.c; sourceTree = "<group>"; };
+		DACAB7802460ECA400D3E75A /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
+		DACAB7812460ECA500D3E75A /* lopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lopcodes.c; sourceTree = "<group>"; };
+		DACAB7822460ECA500D3E75A /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
+		DACAB7832460ECA500D3E75A /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
+		DACAB7842460ECA500D3E75A /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
+		DACAB7852460ECA500D3E75A /* lmathlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmathlib.c; sourceTree = "<group>"; };
+		DACAB7862460ECA500D3E75A /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
+		DACAB7872460ECA500D3E75A /* ltable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltable.c; sourceTree = "<group>"; };
+		DACAB7882460ECA600D3E75A /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
+		DACAB7892460ECA600D3E75A /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
+		DACAB78A2460ECA600D3E75A /* lutf8lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lutf8lib.c; sourceTree = "<group>"; };
+		DACAB78B2460ECA600D3E75A /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
+		DACAB78C2460ECA600D3E75A /* lprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
+		DACAB78D2460ECA600D3E75A /* lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lua.c; sourceTree = "<group>"; };
+		DACAB78E2460ECA700D3E75A /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
+		DACAB78F2460ECA700D3E75A /* lparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lparser.c; sourceTree = "<group>"; };
+		DACAB7902460ECA700D3E75A /* luac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luac.c; sourceTree = "<group>"; };
+		DACAB7912460ECA700D3E75A /* ltm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltm.c; sourceTree = "<group>"; };
+		DACAB7922460ECA700D3E75A /* ldblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldblib.c; sourceTree = "<group>"; };
+		DACAB7932460ECA700D3E75A /* lundump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lundump.c; sourceTree = "<group>"; };
+		DACAB7942460ECA700D3E75A /* lctype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lctype.c; sourceTree = "<group>"; };
+		DACAB7952460ECA800D3E75A /* lcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lcode.c; sourceTree = "<group>"; };
+		DACAB7962460ECA800D3E75A /* lmem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmem.c; sourceTree = "<group>"; };
+		DACAB7972460ECA800D3E75A /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
+		DACAB7982460ECA800D3E75A /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
+		DACAB7992460ECA800D3E75A /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
+		DACAB79A2460ECA800D3E75A /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
+		DACAB79B2460ECA900D3E75A /* ldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldebug.c; sourceTree = "<group>"; };
+		DACAB79C2460ECA900D3E75A /* lgc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lgc.c; sourceTree = "<group>"; };
+		DACAB79D2460ECA900D3E75A /* lobject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lobject.c; sourceTree = "<group>"; };
+		DACAB79E2460ECA900D3E75A /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
+		DACAB79F2460ECA900D3E75A /* lbitlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbitlib.c; sourceTree = "<group>"; };
+		DACAB7A02460ECA900D3E75A /* lfunc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfunc.c; sourceTree = "<group>"; };
+		DACAB7A12460ECA900D3E75A /* ldo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldo.c; sourceTree = "<group>"; };
+		DACAB7A22460ECAA00D3E75A /* lcorolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lcorolib.c; sourceTree = "<group>"; };
+		DACAB7A32460ECAA00D3E75A /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
+		DACAB7A42460ECAA00D3E75A /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
 		DAF1198D24461BE400208974 /* PXSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSprite.swift; sourceTree = "<group>"; };
 		DAF1198F24461CE700208974 /* PXv3f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv3f.swift; sourceTree = "<group>"; };
 		DAF1199124461DCA00208974 /* PXv2f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXv2f.swift; sourceTree = "<group>"; };
@@ -106,6 +247,7 @@
 		DAF588A3245DEA1900F273A0 /* PXDrawContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXDrawContext.swift; sourceTree = "<group>"; };
 		DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpriteDrawable.swift; sourceTree = "<group>"; };
 		DAF588A92460929100F273A0 /* PXStaticSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXStaticSprite.swift; sourceTree = "<group>"; };
+		DAF657DC2460D47500453FDA /* LuaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LuaVM.swift; path = PixeNgineTests/LuaVM.swift; sourceTree = SOURCE_ROOT; };
 		F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,7 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F567CDA78BC078C7EE17C378 /* Pods_PixeNgine.framework in Frameworks */,
+				DAF657E82460D97900453FDA /* Pods_PixeNgine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +280,6 @@
 				F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */,
 				B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -183,7 +324,6 @@
 		DAA6078D243E86E400D0E349 = {
 			isa = PBXGroup;
 			children = (
-				DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */,
 				DAA60799243E86E400D0E349 /* PixeNgine */,
 				DAA607A4243E86E400D0E349 /* PixeNgineTests */,
 				DAA60798243E86E400D0E349 /* Products */,
@@ -204,6 +344,9 @@
 		DAA60799243E86E400D0E349 /* PixeNgine */ = {
 			isa = PBXGroup;
 			children = (
+				DACAB7672460EC9500D3E75A /* luasrc */,
+				DACAB7602460E7AA00D3E75A /* LuaWrapper.h */,
+				DACAB7632460E92500D3E75A /* LuaWrapper.m */,
 				DACC328B2460CD5500358A7F /* Lua */,
 				DAF657D22460CDCD00453FDA /* Graphics */,
 				DAA607C4243E893C00D0E349 /* Utils */,
@@ -218,16 +361,10 @@
 			children = (
 				DAA607A5243E86E400D0E349 /* PixeNgineTests.swift */,
 				DAA607A7243E86E400D0E349 /* Info.plist */,
+				DA92B34524674CEE00522899 /* LuaTests.swift */,
+				DA92B34724674E1700522899 /* testimpl.lua */,
 			);
 			path = PixeNgineTests;
-			sourceTree = "<group>";
-		};
-		DAA607B8243E870900D0E349 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DAA607BC243E870900D0E349 /* PixEngine-Test.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DAA607C4243E893C00D0E349 /* Utils */ = {
@@ -279,9 +416,81 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		DACAB7672460EC9500D3E75A /* luasrc */ = {
+			isa = PBXGroup;
+			children = (
+				DACAB7972460ECA800D3E75A /* lapi.c */,
+				DACAB7762460ECA300D3E75A /* lapi.h */,
+				DACAB7712460ECA200D3E75A /* lauxlib.c */,
+				DACAB76E2460ECA200D3E75A /* lauxlib.h */,
+				DACAB76B2460ECA100D3E75A /* lbaselib.c */,
+				DACAB79F2460ECA900D3E75A /* lbitlib.c */,
+				DACAB7952460ECA800D3E75A /* lcode.c */,
+				DACAB76C2460ECA100D3E75A /* lcode.h */,
+				DACAB7A22460ECAA00D3E75A /* lcorolib.c */,
+				DACAB7942460ECA700D3E75A /* lctype.c */,
+				DACAB7982460ECA800D3E75A /* lctype.h */,
+				DACAB7922460ECA700D3E75A /* ldblib.c */,
+				DACAB79B2460ECA900D3E75A /* ldebug.c */,
+				DACAB79E2460ECA900D3E75A /* ldebug.h */,
+				DACAB7A12460ECA900D3E75A /* ldo.c */,
+				DACAB7782460ECA300D3E75A /* ldo.h */,
+				DACAB7772460ECA300D3E75A /* ldump.c */,
+				DACAB7A02460ECA900D3E75A /* lfunc.c */,
+				DACAB7992460ECA800D3E75A /* lfunc.h */,
+				DACAB79C2460ECA900D3E75A /* lgc.c */,
+				DACAB7802460ECA400D3E75A /* lgc.h */,
+				DACAB77E2460ECA400D3E75A /* linit.c */,
+				DACAB77D2460ECA400D3E75A /* liolib.c */,
+				DACAB7722460ECA200D3E75A /* llex.c */,
+				DACAB7702460ECA200D3E75A /* llex.h */,
+				DACAB7682460ECA100D3E75A /* llimits.h */,
+				DACAB7852460ECA500D3E75A /* lmathlib.c */,
+				DACAB7962460ECA800D3E75A /* lmem.c */,
+				DACAB78E2460ECA700D3E75A /* lmem.h */,
+				DACAB7732460ECA300D3E75A /* loadlib.c */,
+				DACAB79D2460ECA900D3E75A /* lobject.c */,
+				DACAB7832460ECA500D3E75A /* lobject.h */,
+				DACAB7812460ECA500D3E75A /* lopcodes.c */,
+				DACAB7842460ECA500D3E75A /* lopcodes.h */,
+				DACAB76F2460ECA200D3E75A /* loslib.c */,
+				DACAB78F2460ECA700D3E75A /* lparser.c */,
+				DACAB7882460ECA600D3E75A /* lparser.h */,
+				DACAB78C2460ECA600D3E75A /* lprefix.h */,
+				DACAB77A2460ECA400D3E75A /* lstate.c */,
+				DACAB7A32460ECAA00D3E75A /* lstate.h */,
+				DACAB77F2460ECA400D3E75A /* lstring.c */,
+				DACAB7A42460ECAA00D3E75A /* lstring.h */,
+				DACAB7752460ECA300D3E75A /* lstrlib.c */,
+				DACAB7872460ECA500D3E75A /* ltable.c */,
+				DACAB79A2460ECA800D3E75A /* ltable.h */,
+				DACAB7692460ECA100D3E75A /* ltablib.c */,
+				DACAB7912460ECA700D3E75A /* ltm.c */,
+				DACAB77B2460ECA400D3E75A /* ltm.h */,
+				DACAB78D2460ECA600D3E75A /* lua.c */,
+				DACAB7862460ECA500D3E75A /* lua.h */,
+				DACAB7792460ECA400D3E75A /* lua.hpp */,
+				DACAB7902460ECA700D3E75A /* luac.c */,
+				DACAB77C2460ECA400D3E75A /* luaconf.h */,
+				DACAB78B2460ECA600D3E75A /* lualib.h */,
+				DACAB7932460ECA700D3E75A /* lundump.c */,
+				DACAB76D2460ECA200D3E75A /* lundump.h */,
+				DACAB78A2460ECA600D3E75A /* lutf8lib.c */,
+				DACAB7742460ECA300D3E75A /* lvm.c */,
+				DACAB76A2460ECA100D3E75A /* lvm.h */,
+				DACAB7892460ECA600D3E75A /* lzio.c */,
+				DACAB7822460ECA500D3E75A /* lzio.h */,
+			);
+			path = luasrc;
+			sourceTree = "<group>";
+		};
 		DACC328B2460CD5500358A7F /* Lua */ = {
 			isa = PBXGroup;
 			children = (
+				DAF657DC2460D47500453FDA /* LuaVM.swift */,
+				DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */,
+				DA92B30A2461E79000522899 /* LuaTypes.swift */,
+				DA92B30E246324E100522899 /* LuaLModule.swift */,
 			);
 			path = Lua;
 			sourceTree = "<group>";
@@ -340,8 +549,35 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACAB81E2460ED2F00D3E75A /* lzio.h in Headers */,
+				DACAB7FA2460ED2F00D3E75A /* llex.h in Headers */,
+				DACAB80B2460ED2F00D3E75A /* lstring.h in Headers */,
+				DACAB7E32460ED2F00D3E75A /* lapi.h in Headers */,
+				DACAB8032460ED2F00D3E75A /* lopcodes.h in Headers */,
+				DACAB8012460ED2F00D3E75A /* lobject.h in Headers */,
+				DACAB8062460ED2F00D3E75A /* lparser.h in Headers */,
+				DACAB7E92460ED2F00D3E75A /* lcode.h in Headers */,
+				DACAB8172460ED2F00D3E75A /* lualib.h in Headers */,
+				DACAB8142460ED2F00D3E75A /* lua.hpp in Headers */,
+				DACAB81C2460ED2F00D3E75A /* lvm.h in Headers */,
+				DACAB8072460ED2F00D3E75A /* lprefix.h in Headers */,
+				DACAB80E2460ED2F00D3E75A /* ltable.h in Headers */,
+				DACAB7F42460ED2F00D3E75A /* lfunc.h in Headers */,
+				DACAB7FE2460ED2F00D3E75A /* lmem.h in Headers */,
+				DACAB7E52460ED2F00D3E75A /* lauxlib.h in Headers */,
+				DACAB7F12460ED2F00D3E75A /* ldo.h in Headers */,
+				DACAB7EF2460ED2F00D3E75A /* ldebug.h in Headers */,
+				DACAB7F62460ED2F00D3E75A /* lgc.h in Headers */,
+				DACAB8162460ED2F00D3E75A /* luaconf.h in Headers */,
+				DACAB7FB2460ED2F00D3E75A /* llimits.h in Headers */,
+				DACAB7EC2460ED2F00D3E75A /* lctype.h in Headers */,
+				DACAB8192460ED2F00D3E75A /* lundump.h in Headers */,
+				DACAB8132460ED2F00D3E75A /* lua.h in Headers */,
+				DACAB8112460ED2F00D3E75A /* ltm.h in Headers */,
+				DACAB8092460ED2F00D3E75A /* lstate.h in Headers */,
 				DAA607A8243E86E400D0E349 /* PixeNgine.h in Headers */,
 				DAA607D5243E9C7200D0E349 /* ShaderTypes.h in Headers */,
+				DACAB7622460E8B300D3E75A /* LuaWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +594,7 @@
 				DAA60794243E86E400D0E349 /* Frameworks */,
 				DA3EADBD2459D98F00452FFA /* ShellScript */,
 				DAA60795243E86E400D0E349 /* Resources */,
+				DAF657EA2460D97900453FDA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -376,7 +613,6 @@
 				DAA6079C243E86E400D0E349 /* Sources */,
 				DAA6079D243E86E400D0E349 /* Frameworks */,
 				DAA6079E243E86E400D0E349 /* Resources */,
-				7217735F70A8868C29152596 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,12 +654,6 @@
 			mainGroup = DAA6078D243E86E400D0E349;
 			productRefGroup = DAA60798243E86E400D0E349 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DAA607B8243E870900D0E349 /* Products */;
-					ProjectRef = DAA607B7243E870900D0E349 /* PixEngine-Test.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DAA60796243E86E400D0E349 /* PixeNgine */,
@@ -431,16 +661,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DAA607BC243E870900D0E349 /* PixEngine-Test.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "PixEngine-Test.app";
-			remoteRef = DAA607BB243E870900D0E349 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DAA60795243E86E400D0E349 /* Resources */ = {
@@ -454,6 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA92B34824674E1700522899 /* testimpl.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,23 +701,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7217735F70A8868C29152596 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B823437AC135F805113E9570 /* [CP] Check Pods Manifest.lock */ = {
@@ -545,36 +749,73 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACAB7FD2460ED2F00D3E75A /* lmem.c in Sources */,
+				DA20C97A2461DA9E00BFDF34 /* LuaCModule.swift in Sources */,
+				DACAB7F22460ED2F00D3E75A /* ldump.c in Sources */,
+				DACAB7F82460ED2F00D3E75A /* liolib.c in Sources */,
+				DACAB81A2460ED2F00D3E75A /* lutf8lib.c in Sources */,
+				DACAB7EE2460ED2F00D3E75A /* ldebug.c in Sources */,
 				DAF588AA2460929100F273A0 /* PXStaticSprite.swift in Sources */,
 				DAA607C3243E874600D0E349 /* PXRenderer.swift in Sources */,
 				DAA607D3243E973800D0E349 /* Shaders.metal in Sources */,
 				DAF1199224461DCA00208974 /* PXv2f.swift in Sources */,
+				DACAB7E22460ED2F00D3E75A /* lapi.c in Sources */,
 				DAC5DDA82454851700FFD590 /* PXLightPipeline.swift in Sources */,
+				DAF657DD2460D47500453FDA /* LuaVM.swift in Sources */,
 				DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */,
+				DACAB7F02460ED2F00D3E75A /* ldo.c in Sources */,
+				DACAB7FC2460ED2F00D3E75A /* lmathlib.c in Sources */,
+				DACAB8082460ED2F00D3E75A /* lstate.c in Sources */,
+				DACAB7F92460ED2F00D3E75A /* llex.c in Sources */,
 				DAF588992459FFC800F273A0 /* PXFont.swift in Sources */,
 				DAF588962459FFBB00F273A0 /* PXFontManager.swift in Sources */,
 				DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */,
+				DACAB7E62460ED2F00D3E75A /* lbaselib.c in Sources */,
+				DACAB7642460E92500D3E75A /* LuaWrapper.m in Sources */,
+				DACAB7EB2460ED2F00D3E75A /* lctype.c in Sources */,
 				DAF588A6245E040B00F273A0 /* PXSpriteDrawable.swift in Sources */,
 				DAF588A0245B47A200F273A0 /* Meshes.swift in Sources */,
+				DACAB81D2460ED2F00D3E75A /* lzio.c in Sources */,
+				DACAB80A2460ED2F00D3E75A /* lstring.c in Sources */,
 				DAA607CC243E91E700D0E349 /* PXTile.swift in Sources */,
 				DAA6A1E32441029500A9A620 /* PXBasicPipeline.swift in Sources */,
+				DA92B30B2461E79000522899 /* LuaTypes.swift in Sources */,
+				DACAB7FF2460ED2F00D3E75A /* loadlib.c in Sources */,
 				DAA607DE2440AEB600D0E349 /* PXTextureManager.swift in Sources */,
+				DACAB8182460ED2F00D3E75A /* lundump.c in Sources */,
+				DACAB81B2460ED2F00D3E75A /* lvm.c in Sources */,
 				DAF588A4245DEA1900F273A0 /* PXDrawContext.swift in Sources */,
 				DAC5DDA52454846F00FFD590 /* PXLight.swift in Sources */,
+				DACAB7E72460ED2F00D3E75A /* lbitlib.c in Sources */,
 				DAF119982446250600208974 /* PXResourceManager.swift in Sources */,
+				DACAB8022460ED2F00D3E75A /* lopcodes.c in Sources */,
 				DAA607D82440ACFF00D0E349 /* PXTexture.swift in Sources */,
 				DAA607DC2440ADE500D0E349 /* PXRect.swift in Sources */,
+				DACAB8102460ED2F00D3E75A /* ltm.c in Sources */,
 				DAA6A1DE2440D97800A9A620 /* Matrices.swift in Sources */,
+				DA92B30F246324E100522899 /* LuaLModule.swift in Sources */,
 				DAF5889D245A128000F273A0 /* PXText.swift in Sources */,
 				DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */,
 				DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */,
 				DAA607C6243E895100D0E349 /* PXColor.swift in Sources */,
+				DACAB80C2460ED2F00D3E75A /* lstrlib.c in Sources */,
 				DAA6A1E02440FD0100A9A620 /* PXCache.swift in Sources */,
+				DACAB7F72460ED2F00D3E75A /* linit.c in Sources */,
 				DAF1199024461CE700208974 /* PXv3f.swift in Sources */,
+				DACAB8002460ED2F00D3E75A /* lobject.c in Sources */,
+				DACAB80D2460ED2F00D3E75A /* ltable.c in Sources */,
+				DACAB7EA2460ED2F00D3E75A /* lcorolib.c in Sources */,
+				DACAB7E42460ED2F00D3E75A /* lauxlib.c in Sources */,
+				DACAB7ED2460ED2F00D3E75A /* ldblib.c in Sources */,
 				DAF1198E24461BE400208974 /* PXSprite.swift in Sources */,
+				DACAB80F2460ED2F00D3E75A /* ltablib.c in Sources */,
 				DAA6A1DB2440D76C00A9A620 /* PXCamera.swift in Sources */,
+				DACAB8052460ED2F00D3E75A /* lparser.c in Sources */,
+				DACAB7F32460ED2F00D3E75A /* lfunc.c in Sources */,
 				DAA6A1E52443B1BA00A9A620 /* PXScene.swift in Sources */,
+				DACAB7F52460ED2F00D3E75A /* lgc.c in Sources */,
 				DAA607E62440C4F300D0E349 /* PXConfig.swift in Sources */,
+				DACAB7E82460ED2F00D3E75A /* lcode.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA92B34624674CEE00522899 /* LuaTests.swift in Sources */,
 				DAA607A6243E86E400D0E349 /* PixeNgineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,6 +965,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B639068D2C299094C8E013B /* Pods-PixeNgine.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -740,6 +984,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shivatinker.PixeNgine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -750,6 +995,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0F8ED36DD8D9764CE96264A /* Pods-PixeNgine.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -767,6 +1014,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shivatinker.PixeNgine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

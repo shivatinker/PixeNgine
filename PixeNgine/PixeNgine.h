@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ShaderTypes.h"
+#import "LuaWrapper.h"
 
 //! Project version number for PixeNgine.
 FOUNDATION_EXPORT double PixeNgineVersionNumber;

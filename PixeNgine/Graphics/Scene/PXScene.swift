@@ -14,6 +14,7 @@ public class PXScene {
 
     // MARK: Private members
     private var nextID = 0
+    private let device = PXConfig.device
 
     private var sceneEntities = [Int]()
     private var hud = [Int]()
@@ -106,7 +107,7 @@ public class PXScene {
     public func renderLights(encoder: MTLRenderCommandEncoder) {
         // Lighting pass
         if let camera = camera {
-            let context = PXDrawContext(encoder: encoder, camera: camera)
+            let context = PXDrawContext(device: device, encoder: encoder, camera: camera)
             context.drawLights(
                 ambientColor: PXColor(r: 0.1, g: 0.1, b: 0.1, a: 1.0),
                 lights: entities.values.compactMap({ $0 as? PXLight }))
@@ -115,7 +116,7 @@ public class PXScene {
 
     public func renderScene(encoder: MTLRenderCommandEncoder) {
         if let camera = camera {
-            let context = PXDrawContext(encoder: encoder, camera: camera)
+            let context = PXDrawContext(device: device, encoder: encoder, camera: camera)
 
             //Optimized background rendering
             let bgBounds = camera.backgroundBounds
@@ -138,14 +139,14 @@ public class PXScene {
         if let hudCamera = hudCamera,
             let camera = camera {
             //HUD renddering
-            let sceneHudContext = PXDrawContext(encoder: encoder, camera: camera)
+            let sceneHudContext = PXDrawContext(device: device, encoder: encoder, camera: camera)
             sceneEntities.forEach({
                 if let e = entities[$0],
                     e.renderMode == .hud {
                     e.draw(context: sceneHudContext)
                 }
             })
-            let hudContext = PXDrawContext(encoder: encoder, camera: hudCamera)
+            let hudContext = PXDrawContext(device: device, encoder: encoder, camera: hudCamera)
             hud.forEach({
                 if let e = entities[$0] {
                     e.draw(context: hudContext)

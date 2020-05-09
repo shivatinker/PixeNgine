@@ -89,8 +89,8 @@ public class PXRenderer: NSObject {
         super.init()
         mtkView.delegate = self
 
-
-        lightsTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Lights")
+        lightsTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size:
+            CGSize(width: mtkView.drawableSize.width / 3, height: mtkView.drawableSize.height / 3), label: "Lights")
         entitiesTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Entities")
         overlayTexture = buildTexture(pixelFormat: PXConfig.texturePixelFormat, size: mtkView.drawableSize, label: "Overlays")
 
