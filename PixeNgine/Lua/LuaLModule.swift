@@ -27,7 +27,7 @@ public struct LuaLModule {
         functions.forEach({ self.functionsL[$0.name] = $0 })
     }
 
-    public func call(_ f: String, _ args: LuaCompatible...) -> [LuaValue]? {
+    public func call(_ f: String, _ args: LuaValue...) -> [LuaValue]? {
         guard let fl = functionsL[f] else {
             pxDebug("No function \(f) in module \(impl)")
             return nil
@@ -36,6 +36,6 @@ public struct LuaLModule {
             pxDebug("Wrong argument count for function \(f). Expected: \(fl.args), got: \(args.count)")
             return nil
         }
-        return vm.callFromModule(moduleName: impl, f: fl, args: args.map({ $0.luaValue }))
+        return vm.callFromModule(moduleName: impl, f: fl, args: args)
     }
 }

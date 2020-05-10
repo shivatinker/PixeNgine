@@ -8,22 +8,19 @@
 
 import Foundation
 
-extension PXv2f: LuaCompatible {
-    public static func fromLua(_ v: LuaValue?) -> PXv2f? {
-        if case let .table(kv) = v,
-            let x = Float.fromLua(kv["x"] ?? nil),
-            let y = Float.fromLua(kv["y"] ?? nil) {
-            return PXv2f(x, y)
-        }
-        return nil
+extension PXv2f: LuaValue {
+    public func luaPush(_ L: LuaVM.VMState) {
+        LuaTable(rows: [
+            "x": x,
+            "y": y
+        ]).luaPush(L)
     }
 
-    public var luaValue: LuaValue {
-        return .table([
-            "x": x.luaValue,
-            "y": y.luaValue
-        ])
+    public static func luaGet(_ L: LuaVM.VMState, _ addr: Int32) -> PXv2f {
+        let t = LuaTable.luaGet(L, addr)
+        return PXv2f(t["x"] as! Float, t["y"] as! Float)
     }
+
 }
 
 public struct PXv2f {

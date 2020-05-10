@@ -35,4 +35,6 @@
 #include "lvm.h"
 #include "lzio.h"
 
+void stackDump (lua_State *L);
+
 #endif /* LuaWrapper_h */

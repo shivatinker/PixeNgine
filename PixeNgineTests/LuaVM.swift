@@ -21,60 +21,19 @@ public struct LuaFunction {
 }
 
 // MARK: Useful marcos
-private func pop(_ L: LuaVM.VMState, n: Int = 1) {
+internal func luaPop_(_ L: LuaVM.VMState, n: Int = 1) {
     lua_settop(L, Int32(-n - 1))
 }
 
-private func upvalue_index(_ i: Int) -> Int32 {
+internal func luaUpvalue(_ i: Int) -> Int32 {
     return (-LUAI_MAXSTACK - 1000) - Int32(i)
 }
 
 
-private func push(_ L: LuaVM.VMState, _ v: LuaValue) {
-    switch v {
-    case let .number(f):
-        lua_pushnumber(L, lua_Number(f))
-    case let .integer(i):
-        lua_pushinteger(L, lua_Integer(i))
-    case let .string(s):
-        lua_pushstring(L, s)
-    case let .table(kv):
-        lua_createtable(L, 0, Int32(kv.count))
-        for kv in kv {
-            let v = kv.value
-            lua_pushstring(L, kv.key)
-            push(L, v)
-            lua_settable(L, -3)
-        }
-    }
-}
-
-// TODO: FIX THIS DOUBLE SHIT
-private func poparg(_ L: LuaVM.VMState) -> LuaValue? {
-    defer {
-        pop(L)
-    }
-    switch lua_type(L, -1) {
-    case LUA_TNUMBER:
-        return .number(Float(lua_tonumberx(L, -1, nil)))
-    case LUA_TSTRING:
-        return .string(String(cString: lua_tolstring(L, -1, nil)))
-    case LUA_TTABLE:
-        var kv = [String: LuaValue]()
-        lua_pushnil(L)
-        while(lua_next(L, -2) != 0) {
-            kv[String(cString: lua_tolstring(L, -2, nil))] = poparg(L)
-        }
-        return .table(kv)
-    default:
-        return nil
-    }
-}
-
 // MARK: LuaVM
 public class LuaVM {
     // MARK: Private
-    private var L: VMState
+    internal var L: VMState
     private var loadedCModules = [LuaCModule]()
 
     // Error handler for pcall
@@ -123,22 +82,16 @@ public class LuaVM {
         }
 
 
-        for v in args { push(L, v) }
+        for v in args { v.luaPush(L) }
 
         withModules {
             pcall(nargs: args.count, nresults: f.res)
         }
 
         var res = [LuaValue]()
-        for i in 1...f.res {
-            if let v = poparg(L) {
-                res.append(v)
-            } else {
-                pxDebug("Wrong return type!")
-                // Stack safety
-                pop(L, n: f.res - i)
-                return nil
-            }
+        for _ in 1...f.res {
+            res.append(luaGetAuto(L))
+            luaPop_(L)
         }
         return res.reversed()
     }
@@ -151,7 +104,7 @@ public class LuaVM {
     internal func callFromGlobals(_ f: LuaFunction, args: [LuaValue] = []) -> [LuaValue]? {
         lua_getglobal(L, f.name)
         guard let r = callFunctionOnTop(f, args: args) else {
-            pop(L, n: 1)
+            luaPop_(L, n: 1)
             return nil
         }
         return r
@@ -161,10 +114,10 @@ public class LuaVM {
         lua_getglobal(L, moduleName) // 1
         lua_getfield(L, -1, f.name) // 2
         guard let r = callFunctionOnTop(f, args: args) else { // pop 2
-            pop(L, n: 2)
+            luaPop_(L, n: 2)
             return nil
         }
-        pop(L, n: 1) // pop 1
+        luaPop_(L, n: 1) // pop 1
         return r
     }
 
@@ -177,7 +130,7 @@ public class LuaVM {
         lua_pushcclosure(L, Self.errorfunc, 0)
         errorfuncSL = lua_gettop(L)
     }
-    
+
     /// Runs lua code in string
     /// - Parameter data: lua codec
     public func doString(_ data: String) {
@@ -186,7 +139,7 @@ public class LuaVM {
             pcall(nargs: 0, nresults: -1)
         }
     }
-    
+
     /// Runs lua script in file
     /// - Parameter file: file URL
     public func doFile(_ file: URL) {
@@ -195,7 +148,7 @@ public class LuaVM {
             pcall(nargs: 0, nresults: -1)
         }
     }
-    
+
     /// Loads Lua module from file and assigns its table to global variable
     /// - Parameters:
     ///   - file: .lua file
@@ -224,26 +177,27 @@ public class LuaVM {
             lua_pushstring(L, f.name)
             lua_pushcclosure(L, { L in
                 guard let L = L else { fatalError() }
-                let mname = String(cString: lua_tolstring(L, upvalue_index(1), nil))
-                let fname = String(cString: lua_tolstring(L, upvalue_index(2), nil))
+                let mname = String(cString: lua_tolstring(L, luaUpvalue(1), nil))
+                let fname = String(cString: lua_tolstring(L, luaUpvalue(2), nil))
 
                 // Getting LuaCFunction object of current function
                 lua_getglobal(L, "_loadedModules")
                 let ptr: Int = Int(lua_tointegerx(L, -1, nil))
-                pop(L)
+                luaPop_(L)
                 let modules = UnsafeRawPointer(bitPattern: ptr)!.load(as: [LuaCModule].self)
                 let fu = (modules.first(where: { $0.name == mname })?.functions.first(where: { $0.name == fname }))!
 
                 // Popping function arguments from stack
                 var args = [LuaValue]()
                 for _ in 0..<fu.args {
-                    args.append(poparg(L)!)
+                    args.append(luaGetAuto(L))
+                    luaPop_(L)
                 }
                 let res = fu.body(args)
                 // Pushing function results to stack
                 assert(res.count == fu.res)
                 for r in res {
-                    push(L, r)
+                    r.luaPush(L)
                 }
                 return Int32(fu.res)
             }, 2)
