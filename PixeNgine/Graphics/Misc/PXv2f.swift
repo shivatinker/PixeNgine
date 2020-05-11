@@ -8,19 +8,18 @@
 
 import Foundation
 
-extension PXv2f: LuaValue {
-    public func luaPush(_ L: LuaVM.VMState) {
+extension PXv2f: LuaObject {
+    public var luaValue: LuaValue {
         LuaTable(rows: [
             "x": x,
             "y": y
-        ]).luaPush(L)
+        ])
     }
 
-    public static func luaGet(_ L: LuaVM.VMState, _ addr: Int32) -> PXv2f {
-        let t = LuaTable.luaGet(L, addr)
+    public static func fromLua(_ v: LuaValue) -> PXv2f {
+        let t = v as! LuaTable
         return PXv2f(t["x"] as! Float, t["y"] as! Float)
     }
-
 }
 
 public struct PXv2f {

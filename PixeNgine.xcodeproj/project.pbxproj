@@ -110,6 +110,7 @@
 		DAF657DD2460D47500453FDA /* LuaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF657DC2460D47500453FDA /* LuaVM.swift */; };
 		DAF657E82460D97900453FDA /* Pods_PixeNgine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; };
 		DAF657E92460D97900453FDA /* Pods_PixeNgine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DAF9AB212468BBEB00382CE1 /* LuaCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF9AB202468BBEB00382CE1 /* LuaCoderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +249,7 @@
 		DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXSpriteDrawable.swift; sourceTree = "<group>"; };
 		DAF588A92460929100F273A0 /* PXStaticSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXStaticSprite.swift; sourceTree = "<group>"; };
 		DAF657DC2460D47500453FDA /* LuaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LuaVM.swift; path = PixeNgineTests/LuaVM.swift; sourceTree = SOURCE_ROOT; };
+		DAF9AB202468BBEB00382CE1 /* LuaCoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaCoderTests.swift; sourceTree = "<group>"; };
 		F155A578FCC346BD5D95BDEB /* Pods-PixeNgine-PixeNgineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -363,6 +365,7 @@
 				DAA607A7243E86E400D0E349 /* Info.plist */,
 				DA92B34524674CEE00522899 /* LuaTests.swift */,
 				DA92B34724674E1700522899 /* testimpl.lua */,
+				DAF9AB202468BBEB00382CE1 /* LuaCoderTests.swift */,
 			);
 			path = PixeNgineTests;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 			files = (
 				DA92B34624674CEE00522899 /* LuaTests.swift in Sources */,
 				DAA607A6243E86E400D0E349 /* PixeNgineTests.swift in Sources */,
+				DAF9AB212468BBEB00382CE1 /* LuaCoderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

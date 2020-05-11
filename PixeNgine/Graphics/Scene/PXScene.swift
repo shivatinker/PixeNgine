@@ -43,12 +43,14 @@ public class PXScene {
         entities[nextID] = entity
         sceneEntities.append(nextID)
         nextID += 1
+        entity.subentities.forEach({ self.addEntity($0) })
     }
 
     public func addHudEntity(_ entity: PXEntity) {
         entities[nextID] = entity
         hud.append(nextID)
         nextID += 1
+        entity.subentities.forEach({ self.addHudEntity($0) })
     }
 
     public func setBackgroundTile(x: Int, y: Int, tile: PXTile) {
@@ -94,7 +96,7 @@ public class PXScene {
     public func updateScene() {
         entities.values.forEach({ $0.update() })
         let shouldBeRemoved = entities.compactMap({ kv -> Int? in
-            if kv.value.shouldBeRemoved {
+            if kv.value.shouldBeRemoved || !bounds.isInside(kv.value.center){
                 return kv.key
             }
             return nil

@@ -116,7 +116,7 @@ private func getType(_ L: LuaVM.VMState, _ addr: Int32 = -1) -> LuaValue.Type {
 
         switch ntype {
         case "float":
-            return Double.self
+            return Float.self //Double.self
         case "integer":
             return Int64.self
         default: assertionFailure()
@@ -145,7 +145,6 @@ internal func luaGetAuto(_ L: LuaVM.VMState, _ addr: Int32 = -1) -> LuaValue {
 
 internal func luaPopAuto(_ L: LuaVM.VMState) -> LuaValue {
     let tt: LuaValue.Type = getType(L)
-    debugPrint(tt)
     return tt.luaPop(L)
 }
 
@@ -167,18 +166,18 @@ public struct LuaTable: LuaValue {
 
     public static func luaGet(_ L: LuaVM.VMState, _ addr: Int32) -> LuaTable {
 
-        print("Table get")
-        stackDump(L)
+//        print("Table get")
+//        stackDump(L)
 
         var res = LuaTable()
         lua_pushnil(L)
 
         while(lua_next(L, -2) != 0) {
             let key = String.luaGet(L, -2)
-            print("Key: \(key)")
-            stackDump(L)
+//            print("Key: \(key)")
+//            stackDump(L)
             res.rows[key] = luaPopAuto(L)
-            debugPrint(res)
+//            debugPrint(res)
 //            stackDump(L)
         }
         return res
@@ -196,4 +195,9 @@ public struct LuaTable: LuaValue {
             fatalError("No \"\(index)\" row in table")
         }
     }
+}
+
+public protocol LuaObject {
+    var luaValue: LuaValue { get }
+    static func fromLua(_ v: LuaValue) -> Self
 }

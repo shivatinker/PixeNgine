@@ -13,13 +13,14 @@ public enum PXRenderMode {
     case hud
 }
 
-open class PXEntity {
+open class PXEntity{
     // Common fields
     public var pos: PXv2f = .zero
     public var name: String
     open var dimensions: PXv2f { .zero }
     public var shouldBeRemoved: Bool = false
     public var renderMode: PXRenderMode = .scene
+    public var subentities = [PXEntity]()
 
     // Common methods
     open func update() {
@@ -35,6 +36,12 @@ open class PXEntity {
 
     deinit {
         pxDebug("Entity \(name) deleted")
+    }
+}
+
+extension PXEntity:CustomDebugStringConvertible{
+    public var debugDescription: String {
+        "Entity \(name)\n\t shouldBeRemoved: \(shouldBeRemoved),\n\t subentities: \(subentities.debugDescription)"
     }
 }
 

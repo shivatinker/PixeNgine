@@ -22,6 +22,10 @@ public class PXResourceManager {
         descriptors.forEach({ self.tileDescriptors[$0.id] = $0 })
         pxDebug("Loaded \(tileDescriptors.count) tiles")
     }
+
+    public func loadFile<T: Codable>(_ type: T.Type, file: URL) -> T {
+        return try! decoder.decode(type, from: Data(contentsOf: file))
+    }
 }
 
 public struct PXTileDescriptor: Decodable {

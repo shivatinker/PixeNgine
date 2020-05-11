@@ -75,12 +75,15 @@ class LuaTests: XCTestCase {
     }
 
     func testTypes() {
-//        testTypesWithAuto(auto: false)
-//        testTypesWithAuto(auto: true)
+        stackDump(vm.L)
+        testTypesWithAuto(auto: false)
+        testTypesWithAuto(auto: true)
         testTable(LuaTable(rows: [
             "adsf": 1234,
             "qwer__rq__": "rwf_",
             "ttqe": 31.5133
         ]))
+        
+        stackDump(vm.L)
     }
 }
