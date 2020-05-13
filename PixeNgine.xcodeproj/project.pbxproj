@@ -10,6 +10,7 @@
 		6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */; };
 		DA20C97A2461DA9E00BFDF34 /* LuaCModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */; };
 		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
+		DA5D37C5246B215F006AB361 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D37C4246B215F006AB361 /* Physics.swift */; };
 		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
 		DA92B30B2461E79000522899 /* LuaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B30A2461E79000522899 /* LuaTypes.swift */; };
 		DA92B30F246324E100522899 /* LuaLModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B30E246324E100522899 /* LuaLModule.swift */; };
@@ -145,6 +146,7 @@
 		B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaCModule.swift; sourceTree = "<group>"; };
 		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
+		DA5D37C4246B215F006AB361 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
 		DA92B30A2461E79000522899 /* LuaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaTypes.swift; sourceTree = "<group>"; };
 		DA92B30E246324E100522899 /* LuaLModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaLModule.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			children = (
 				DA8859AC24536196008C8E43 /* Abstract */,
 				DAF588A5245E040B00F273A0 /* PXSpriteDrawable.swift */,
+				DA5D37C4246B215F006AB361 /* Physics.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				DACAB8102460ED2F00D3E75A /* ltm.c in Sources */,
 				DAA6A1DE2440D97800A9A620 /* Matrices.swift in Sources */,
 				DA92B30F246324E100522899 /* LuaLModule.swift in Sources */,
+				DA5D37C5246B215F006AB361 /* Physics.swift in Sources */,
 				DAF5889D245A128000F273A0 /* PXText.swift in Sources */,
 				DAA6A1E82443B63800A9A620 /* PXEntity.swift in Sources */,
 				DAA607C8243E8C4900D0E349 /* Debug.swift in Sources */,

@@ -66,6 +66,8 @@ public class LuaVM {
         }
     }
 
+    private var modulesIncluded: Bool = false
+
     /// Calls function on top of the stack
     /// - Parameters:
     ///   - f: LuaFunction to be called
@@ -84,12 +86,18 @@ public class LuaVM {
 
         for v in args { v.luaPush(L) }
 
-        withModules {
+        if !modulesIncluded {
+            modulesIncluded = true
+            withModules {
+                pcall(nargs: args.count, nresults: f.res)
+            }
+            modulesIncluded = false
+        } else {
             pcall(nargs: args.count, nresults: f.res)
         }
 
         var res = [LuaValue]()
-        for _ in 1...f.res {
+        for _ in 0..<f.res {
             res.append(luaGetAuto(L))
             luaPop_(L)
         }
@@ -185,6 +193,7 @@ public class LuaVM {
                 let ptr: Int = Int(lua_tointegerx(L, -1, nil))
                 luaPop_(L)
                 let modules = UnsafeRawPointer(bitPattern: ptr)!.load(as: [LuaCModule].self)
+//                debugPrint(ptr, mname, fname)
                 let fu = (modules.first(where: { $0.name == mname })?.functions.first(where: { $0.name == fname }))!
 
                 // Popping function arguments from stack
@@ -193,7 +202,7 @@ public class LuaVM {
                     args.append(luaGetAuto(L))
                     luaPop_(L)
                 }
-                let res = fu.body(args)
+                let res = fu.body(args.reversed())
                 // Pushing function results to stack
                 assert(res.count == fu.res)
                 for r in res {
@@ -205,5 +214,16 @@ public class LuaVM {
         }
         lua_setglobal(L, "\(module.name)")
         loadedCModules.append(module)
+    }
+
+    @discardableResult
+    public func call(module: LuaLModule, script: String, f: String, _ args: LuaValue...) -> [LuaValue] {
+        guard let fl = module.functionsL[f] else {
+            fatalError("No function \(f) in module \(script)")
+        }
+        guard let res = callFromModule(moduleName: script, f: fl, args: args) else {
+            fatalError("Unable to call \(f) from \(script)")
+        }
+        return res
     }
 }

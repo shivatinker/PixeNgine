@@ -13,7 +13,19 @@ public enum PXRenderMode {
     case hud
 }
 
-open class PXEntity{
+private struct WeakRef {
+    weak var e: PXEntity?
+}
+
+open class PXEntity {
+    // id
+    public final var id: Int64
+    private static var nextID: Int64 = 0
+    private static var all = [Int64: WeakRef]()
+    public static func byID(_ id: Int64) -> PXEntity?{
+        return all[id]?.e
+    }
+
     // Common fields
     public var pos: PXv2f = .zero
     public var name: String
@@ -32,14 +44,19 @@ open class PXEntity{
 
     public init(name: String) {
         self.name = name
+        self.id = Self.nextID
+        Self.nextID += 1
+        Self.all[id] = WeakRef(e: self)
+        
+        pxDebug("Entity \(id) : \(name) created")
     }
 
     deinit {
-        pxDebug("Entity \(name) deleted")
+        pxDebug("Entity \(id) : \(name) deleted")
     }
 }
 
-extension PXEntity:CustomDebugStringConvertible{
+extension PXEntity: CustomDebugStringConvertible {
     public var debugDescription: String {
         "Entity \(name)\n\t shouldBeRemoved: \(shouldBeRemoved),\n\t subentities: \(subentities.debugDescription)"
     }

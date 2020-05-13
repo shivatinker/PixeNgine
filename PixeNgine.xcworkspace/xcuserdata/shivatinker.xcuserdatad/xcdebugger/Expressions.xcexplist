@@ -10,5 +10,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "closure #1 in LuaVM.registerCModule(_:):LuaVM.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "modules">
+            </PersistentString>
+            <PersistentString
+               value = "fname">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

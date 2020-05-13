@@ -26,9 +26,18 @@ public class PXLight: PXEntity {
 }
 
 public class PXFollowLight: PXLight {
-    public weak var target: PXEntity?
+    public weak var _t: PXEntity?
+    public var target: PXEntity? {
+        get {
+            _t
+        }
+        set {
+            _t = newValue
+            update()
+        }
+    }
     public override func update() {
-        if let t = target {
+        if let t = _t {
             self.center = t.center
             if t.shouldBeRemoved {
                 shouldBeRemoved = true

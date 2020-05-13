@@ -94,6 +94,7 @@ public class PXScene {
     }
 
     public func updateScene() {
+//        debugPrint("Count: \(entities.count)")
         entities.values.forEach({ $0.update() })
         let shouldBeRemoved = entities.compactMap({ kv -> Int? in
             if kv.value.shouldBeRemoved || !bounds.isInside(kv.value.center){
