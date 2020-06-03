@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */; };
 		DA20C97A2461DA9E00BFDF34 /* LuaCModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */; };
 		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
 		DA3F8501247AEEB800BD899E /* CollisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3F8500247AEEB800BD899E /* CollisionTests.swift */; };
@@ -124,8 +123,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixeNgine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixeNgine_PixeNgineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaCModule.swift; sourceTree = "<group>"; };
 		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
 		DA3F8500247AEEB800BD899E /* CollisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionTests.swift; sourceTree = "<group>"; };
@@ -250,7 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA607A1243E86E400D0E349 /* PixeNgine.framework in Frameworks */,
-				6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +256,6 @@
 		6EC57497E6F6FC4C6428E811 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0D2CCF41CB28F24E31E27E7F /* Pods_PixeNgine.framework */,
-				5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -920,6 +914,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -949,6 +944,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
