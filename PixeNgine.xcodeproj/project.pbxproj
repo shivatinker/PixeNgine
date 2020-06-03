@@ -10,6 +10,7 @@
 		6BDBB8CFBF8AAD355575946A /* Pods_PixeNgine_PixeNgineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008743D0889B277626FFB0A /* Pods_PixeNgine_PixeNgineTests.framework */; };
 		DA20C97A2461DA9E00BFDF34 /* LuaCModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */; };
 		DA3EADB9245730FC00452FFA /* PXCompositionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */; };
+		DA3F8501247AEEB800BD899E /* CollisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3F8500247AEEB800BD899E /* CollisionTests.swift */; };
 		DA5D37C5246B215F006AB361 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D37C4246B215F006AB361 /* Physics.swift */; };
 		DA8859A924535B4F008C8E43 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8859A824535B4F008C8E43 /* CommonComponents.swift */; };
 		DA92B30B2461E79000522899 /* LuaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA92B30A2461E79000522899 /* LuaTypes.swift */; };
@@ -146,6 +147,7 @@
 		B29EE92A8730D09322933840 /* Pods-PixeNgine-PixeNgineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixeNgine-PixeNgineTests.release.xcconfig"; path = "Target Support Files/Pods-PixeNgine-PixeNgineTests/Pods-PixeNgine-PixeNgineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA20C9792461DA9E00BFDF34 /* LuaCModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaCModule.swift; sourceTree = "<group>"; };
 		DA3EADB8245730FC00452FFA /* PXCompositionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXCompositionPipeline.swift; sourceTree = "<group>"; };
+		DA3F8500247AEEB800BD899E /* CollisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionTests.swift; sourceTree = "<group>"; };
 		DA5D37C4246B215F006AB361 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		DA8859A824535B4F008C8E43 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
 		DA92B30A2461E79000522899 /* LuaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaTypes.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				DAA6A1DA2440D76C00A9A620 /* PXCamera.swift */,
 				DAF5889C245A128000F273A0 /* PXText.swift */,
 				DAF588A92460929100F273A0 /* PXStaticSprite.swift */,
+				DAC5DDA42454846F00FFD590 /* PXLight.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				DA92B34524674CEE00522899 /* LuaTests.swift */,
 				DA92B34724674E1700522899 /* testimpl.lua */,
 				DAF9AB202468BBEB00382CE1 /* LuaCoderTests.swift */,
+				DA3F8500247AEEB800BD899E /* CollisionTests.swift */,
 			);
 			path = PixeNgineTests;
 			sourceTree = "<group>";
@@ -417,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				DAA6A1E42443B1BA00A9A620 /* PXScene.swift */,
-				DAC5DDA42454846F00FFD590 /* PXLight.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 			files = (
 				DA92B34624674CEE00522899 /* LuaTests.swift in Sources */,
 				DAA607A6243E86E400D0E349 /* PixeNgineTests.swift in Sources */,
+				DA3F8501247AEEB800BD899E /* CollisionTests.swift in Sources */,
 				DAF9AB212468BBEB00382CE1 /* LuaCoderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

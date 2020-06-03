@@ -20,16 +20,9 @@ class LuaCoderTests: XCTestCase {
 
     }
 
-    class Test: NSObject {
-        @objc var name: String = ""
-        @objc var int: PXv2f = .zero
-    }
 
     func testExample() throws {
-        let t = Test()
-        t.setValue("fadg", forKey: "name")
-        t.setValue(5234, forKey: "int")
-        debugPrint(t.name, t.int)
+        
     }
 
 }

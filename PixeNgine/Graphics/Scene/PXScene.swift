@@ -26,6 +26,69 @@ public class PXScene {
     }
     private var background = [TileXY: PXTile?]()
 
+    private var grid = [TileXY: Set<Int>]()
+
+    private func removeEntity(_ id: Int) {
+
+        entities.removeValue(forKey: id)
+        sceneEntities.removeAll(where: { $0 == id })
+        hud.removeAll(where: { $0 == id })
+    }
+
+    // Some misc methods
+
+    private let gridSize: Float = 16
+
+    private func getEntityCells(_ e: PXEntity) -> Set<TileXY> {
+        if e.physics == nil {
+            return []
+        }
+        var res = Set<TileXY>()
+        let phrect = PXCollider.aabb(e)
+        for x in Int(floor(phrect.x1 / gridSize))...Int(ceil(phrect.x2 / gridSize)) {
+            for y in Int(floor(phrect.y1 / gridSize))...Int(ceil(phrect.y2 / gridSize)) {
+                res.insert(TileXY(x: x, y: y))
+            }
+        }
+        return res
+    }
+
+    private func getEntityCollisionCandidates(_ e: PXEntity) -> Set<Int> {
+        if e.physics == nil {
+            return []
+        }
+
+        var res = Set<Int>()
+        let cells = getEntityCells(e)
+        for c in cells {
+            for z in grid[c] ?? [] {
+                res.insert(z)
+            }
+        }
+        return res
+    }
+
+    private func insertEntityInGrid(_ id: Int) {
+        if let e = entities[id] {
+            getEntityCells(e).forEach({
+
+                if self.grid[$0] == nil {
+                    self.grid[$0] = Set<Int>()
+                }
+
+                self.grid[$0]!.insert(id)
+
+            })
+        }
+    }
+
+    private func updateGrid() {
+        grid.removeAll()
+        for i in sceneEntities {
+            insertEntityInGrid(i)
+        }
+    }
+
     // MARK: Public API
     public var width: Int
     public var height: Int
@@ -42,6 +105,7 @@ public class PXScene {
     public func addEntity(_ entity: PXEntity) {
         entities[nextID] = entity
         sceneEntities.append(nextID)
+        insertEntityInGrid(nextID)
         nextID += 1
         entity.subentities.forEach({ self.addEntity($0) })
     }
@@ -53,9 +117,35 @@ public class PXScene {
         entity.subentities.forEach({ self.addHudEntity($0) })
     }
 
-    public func setBackgroundTile(x: Int, y: Int, tile: PXTile) {
+    public func setBackgroundTile(x: Int, y: Int, tile: PXTile, solid: Bool) {
         tile.pos = Float(PXConfig.tileSize) * PXv2f(Float(x), Float(y))
         background[TileXY(x: x, y: y)] = tile
+        if solid {
+            tile.physics?.solid = true
+            tile.physics?.hardness = 2
+
+            if background[TileXY(x: x + 1, y: y)]??.physics?.solid ?? false {
+                background[TileXY(x: x + 1, y: y)]??.physics?.incomingCollisions.remove(.left)
+                tile.physics?.incomingCollisions.subtract(.right)
+            }
+
+            if background[TileXY(x: x - 1, y: y)]??.physics?.solid ?? false {
+                background[TileXY(x: x - 1, y: y)]??.physics?.incomingCollisions.remove(.right)
+                tile.physics?.incomingCollisions.subtract(.left)
+            }
+
+            if background[TileXY(x: x + 0, y: y + 1)]??.physics?.solid ?? false {
+                background[TileXY(x: x + 0, y: y + 1)]??.physics?.incomingCollisions.remove(.top)
+                tile.physics?.incomingCollisions.subtract(.bottom)
+            }
+
+            if background[TileXY(x: x - 0, y: y - 1)]??.physics?.solid ?? false {
+                background[TileXY(x: x - 0, y: y - 1)]??.physics?.incomingCollisions.remove(.bottom)
+                tile.physics?.incomingCollisions.subtract(.top)
+            }
+
+            addEntity(tile)
+        }
     }
 
     public func getBackgroundTile(x: Int, y: Int) -> PXTile? {
@@ -87,17 +177,33 @@ public class PXScene {
         self.height = height
     }
 
-    private func removeEntity(_ id: Int) {
-        entities.removeValue(forKey: id)
-        sceneEntities.removeAll(where: { $0 == id })
-        hud.removeAll(where: { $0 == id })
-    }
-
     public func updateScene() {
 //        debugPrint("Count: \(entities.count)")
         entities.values.forEach({ $0.update() })
+
+        updateGrid()
+
+        let dyn = sceneEntities.compactMap({ entities[$0] }).filter({ $0.physics?.dynamic ?? false })
+
+        for d in dyn {
+            let cc = getEntityCollisionCandidates(d).compactMap({ entities[$0] })
+            for s in cc {
+                if d.id != s.id &&
+                    PXCollider.isColliding(d, s)
+                    && !d.shouldBeRemoved && !s.shouldBeRemoved {
+                    let vec = PXCollider.getResolveVector(d, s)
+                    if (d.physics!.hardness < s.physics!.hardness) {
+                        d.pos = d.pos + (1 * vec)
+                    }
+                    let norm = vec.normalize()
+                    d.physics?.delegate?.onCollisionResolved(entity: d, with: s, normal: norm)
+                    s.physics?.delegate?.onCollisionResolved(entity: s, with: d, normal: -1 * norm)
+                }
+            }
+        }
+
         let shouldBeRemoved = entities.compactMap({ kv -> Int? in
-            if kv.value.shouldBeRemoved || !bounds.isInside(kv.value.center){
+            if kv.value.shouldBeRemoved || !bounds.isInside(kv.value.center) {
                 return kv.key
             }
             return nil
@@ -112,7 +218,7 @@ public class PXScene {
         if let camera = camera {
             let context = PXDrawContext(device: device, encoder: encoder, camera: camera)
             context.drawLights(
-                ambientColor: PXColor(r: 0.1, g: 0.1, b: 0.1, a: 1.0),
+                ambientColor: PXColor(r: 0.3, g: 0.3, b: 0.3, a: 1.0),
                 lights: entities.values.compactMap({ $0 as? PXLight }))
         }
     }

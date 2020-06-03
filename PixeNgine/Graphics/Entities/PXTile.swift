@@ -19,7 +19,7 @@ public class PXTileDrawable: PXDrawable {
 
     public func draw(entity: Parent, context: PXDrawContext) {
         if visible, let sprite = sprite {
-            if entity.solid {
+            if entity.physics?.solid ?? false{
                 brightness = 0.3
             } else {
                 brightness = 1.0
@@ -44,7 +44,6 @@ public class PXTile: PXEntity {
 
     // MARK: State fields
     private let descriptor: PXTileDescriptor
-    public var solid: Bool = false
 
     public init?(id: Int) {
         // Get tile descriptor from resources
@@ -54,6 +53,12 @@ public class PXTile: PXEntity {
         }
         self.descriptor = descriptor
         super.init(name: descriptor.name)
+
+        physics = PXPhysics(shape: .rect(
+            width: Float(PXConfig.tileSize),
+            height: Float(PXConfig.tileSize)
+        ))
+        physics?.solid = false
 
         // Load static sprite
         let texture = PXConfig.sharedTextureManager.getTextureByID(id: descriptor.texture)

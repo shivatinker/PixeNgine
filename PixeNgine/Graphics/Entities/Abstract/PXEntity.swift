@@ -18,7 +18,7 @@ private struct WeakRef {
 }
 
 open class PXEntity {
-    // id
+    // id system
     public final var id: Int64
     private static var nextID: Int64 = 0
     private static var all = [Int64: WeakRef]()
@@ -33,10 +33,12 @@ open class PXEntity {
     public var shouldBeRemoved: Bool = false
     public var renderMode: PXRenderMode = .scene
     public var subentities = [PXEntity]()
+    
+    public var physics: PXPhysics?
 
     // Common methods
     open func update() {
-
+        physics?.update(entity: self)
     }
     open func draw(context: PXDrawContext) {
 
@@ -48,11 +50,11 @@ open class PXEntity {
         Self.nextID += 1
         Self.all[id] = WeakRef(e: self)
         
-        pxDebug("Entity \(id) : \(name) created")
+//        pxDebug("Entity \(id) : \(name) created")
     }
 
     deinit {
-        pxDebug("Entity \(id) : \(name) deleted")
+//        pxDebug("Entity \(id) : \(name) deleted")
     }
 }
 
