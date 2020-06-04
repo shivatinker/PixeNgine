@@ -177,8 +177,14 @@ public class PXScene {
         self.height = height
     }
 
+    public var paused = false
+
     public func updateScene() {
 //        debugPrint("Count: \(entities.count)")
+        if(paused) {
+            return
+        }
+
         entities.values.forEach({ $0.update() })
 
         updateGrid()
